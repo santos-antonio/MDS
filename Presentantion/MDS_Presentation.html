@@ -1,0 +1,3669 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['\\[', '\\]']]
+    }
+};
+</script>
+
+<script async
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+
+<title>Métodos Quantitativos | Escalonamento multidimensional</title>
+<style>
+:root{--navy:#0b1f3a;--blue:#2457a6;--paper:#fff;--bg:#eef2f6;--muted:#65758b;--red:#b42318;--orange:#d97706;--green:#18794e;--cyan:#087e8b;--purple:#6d49a8;--line:#d9e1ea}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,"Segoe UI",Arial,sans-serif;background:var(--bg);color:#172033;line-height:1.5}header{background:linear-gradient(135deg,var(--navy),#173f72);color:white;padding:34px 20px}.wrap{max-width:1120px;margin:auto}header h1{margin:0;font-size:clamp(1.8rem,5vw,3rem)}header p{margin:.45rem 0;color:#dce7f7}.hero{margin-top:18px;padding:16px 18px;border:1px solid #ffffff33;background:#ffffff12;border-radius:14px}.toolbar{position:sticky;top:0;z-index:20;background:#ffffffee;backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}.toolbar .wrap{display:flex;gap:10px;align-items:center;padding:10px 20px;overflow:auto}.toolbar a,.toolbar button{white-space:nowrap;border:0;border-radius:999px;padding:9px 13px;background:#e9eff8;color:#18385f;font-weight:700;text-decoration:none;cursor:pointer}.toolbar button{background:#172c4a;color:white}.container{max-width:1120px;margin:24px auto;padding:0 18px}.day{background:var(--paper);border-radius:18px;box-shadow:0 6px 24px #1f334d12;margin:0 0 28px;overflow:hidden}.dayHead{padding:20px 22px;background:#163c6a;color:white;display:flex;justify-content:space-between;gap:16px;align-items:center}.dayHead h2{margin:0}.dayHead .important{background:#fff;color:var(--red);font-weight:900;border-radius:999px;padding:6px 10px;font-size:.82rem}.timeline{padding:8px 18px 20px}.event{position:relative;margin:14px 0;padding:18px 18px 16px 22px;border:1px solid var(--line);border-left:6px solid #8292a5;border-radius:14px;background:#fff}.event.priority{border-left-color:var(--red);background:#fff8f7}.event.ai{border-left-color:var(--blue)}.event.health{border-left-color:var(--green)}.event.supply{border-left-color:var(--orange)}.event.network{border-left-color:var(--purple)}.event.break{border-left-color:#d4a017;background:#fffdf4}.event.presentation{border-left-color:#ef6c00;background:#fff8ee;box-shadow:0 0 0 2px #ffedd5 inset}.time{font-weight:900;color:#123a68;letter-spacing:.02em}.location{color:var(--muted);font-size:.95rem;margin:4px 0 8px}.titleRow{display:flex;align-items:flex-start;gap:10px}.titleRow h3{margin:5px 0;font-size:1.1rem;flex:1}.check{width:22px;height:22px;accent-color:var(--green);cursor:pointer;margin-top:7px}.event.done{opacity:.62}.event.done h3{text-decoration:line-through}.noteBtn{border:0;background:#e8f0fb;color:#173f72;border-radius:9px;padding:8px 10px;font-weight:800;cursor:pointer}.badge{display:inline-block;background:#fee4e2;color:#9d2017;font-weight:900;border-radius:999px;padding:4px 9px;font-size:.78rem}.authors{font-size:.94rem;color:#49576a}.reason{background:#f3f6fa;border-radius:10px;padding:10px 12px;margin-top:10px}.alternative{border-style:dashed!important;background:#fbfbfc!important}.posters{padding:5px 18px 22px}.posters h3{margin-bottom:5px}.posterGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:12px}.poster{border:1px solid var(--line);border-left:5px solid var(--cyan);border-radius:13px;background:#fbfeff;padding:14px}.poster .totem{font-weight:900;color:#066772}.poster h4{margin:5px 0;cursor:pointer;color:#163c6a}.poster h4:hover{text-decoration:underline}.poster .authors{margin:.3rem 0 .7rem}.posterFooter{display:flex;gap:8px;align-items:center}.posterFooter label{font-size:.9rem}.sectionTitle{padding:0 2px;color:#153a65}.progress{height:7px;background:#ccd6e2}.progress>div{height:100%;background:#2a8a5f;width:0%;transition:.2s}.modal{display:none;position:fixed;inset:0;background:#0b1424ad;z-index:1000;padding:18px;overflow:auto}.modal.open{display:flex;align-items:flex-start;justify-content:center}.modalCard{width:min(760px,100%);margin:4vh auto;background:white;border-radius:18px;box-shadow:0 24px 80px #0008;overflow:hidden}.modalHead{padding:18px 20px;background:#102f55;color:white}.modalHead h2{margin:0 36px 4px 0;font-size:1.3rem}.modalHead p{margin:0;color:#d2e1f3}.modalBody{padding:18px 20px}.field{margin-bottom:14px}.field label{display:block;font-weight:800;margin-bottom:5px}.field textarea,.field input,.field select{width:100%;border:1px solid #bcc7d4;border-radius:9px;padding:10px;font:inherit;background:white}.field textarea{min-height:90px;resize:vertical}.modalActions{display:flex;flex-wrap:wrap;gap:8px;padding:0 20px 20px}.modalActions button{border:0;border-radius:9px;padding:10px 13px;font-weight:800;cursor:pointer}.save{background:#1f6c4a;color:white}.copy{background:#e8f0fb;color:#173f72}.close{background:#e8e8e8}.export{background:#172c4a;color:white}@media(max-width:600px){.event{padding:14px}.titleRow{align-items:flex-start}.titleRow h3{font-size:1rem}.posterGrid{grid-template-columns:1fr}.dayHead{align-items:flex-start;flex-direction:column}.toolbar .wrap{padding-left:12px}.noteBtn{padding:7px 8px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><h1>Métodos Quantitativos</h1><p>Escalonamento Multidimensional · Antonio Santos</p><p>UNISINOS · PPGEPS · 2026 · Análise de correspondência · Regras de associação · 13 de novembro de 2026</p><div class="hero"><strong>Agenda<br><strong>📝 Introdução<br>📖Desenvolvimento histórico<br>🟰Desenvolvimento algébrico<br>🐍Aplicação prática (Python)<br>📃Papers<br>📚Bibliográfia</strong></div></div></header>
+<div class="progress"><div id="progressBar"></div></div>
+<nav class="toolbar"><div class="wrap"><a href="#aula1">📝 Introdução</a><a href="#aula2">📖Desenv. histórico</a><a href="#aula3">🟰Desenv. algébrico</a><a href="#aula4">🐍Apl. prática (Python)</a><a href="#aula5">📃Papers</a><a href="#aula6">📚Bibliográfia</a></div></nav>
+<main class="container">
+
+<section class="aula" id="aula1"><div class="aulaHead"><h2>📝 Introdução</h2></div><div class="timeline">
+<div class="event break"><div class="titleRow"><h3>O que é Escalonamento Multidimensional?</h3></div><p class="authors"><strong>"Como visualizar relações complexas entre dezenas de objetos, marcas, produtos, pessoas ou conceitos?"<br><br>O escalonamento multidimensional ou multidimensional scaling (MDS) como definido por Young: <br><div class="reason">"rests on the premise that a picture is worth a thousand numbers."</div><p class="authors">O método transforma uma matriz de relacionamentos, similaridades ou distância em um mapa visual, normalmente bidimensional, onde:<ul><li>objetos semelhantes aparecem próximos;</li><li>objetos diferentes aparecem distantes;</li><li>padrões ocultos tornam-se visíveis.</li></div>
+
+<div class="event health"><div class="titleRow"><h3>Partimos de uma ideia intuitiva</h3></div><p class="authors">Imagine perguntar para consumidores sobre suas preferências<br><br><ul><li>Coca-Cola vs Pepsi</li><li>Coca-Cola vs Guaraná</li><li>Pepsi vs Guaraná<br><p class="authors">O MDS converte essas percepções em um mapa onde as marcas são posicionadas espacialmente conforme sua similaridade percebida.</div>
+
+<div class="event priority"><div class="titleRow"><h3>Para que serve?</h3></div><p class="authors"><strong>O objetivo principal do MDS é: <br><div class="reason">Descobrir e representar estruturas ocultas presentes nos dados</div><p class="authors">Muitas vezes os relacionamentos estão escondidos em tabelas de correlação, similaridade ou distância difíceis de interpretar.<br><br>O MDS converte esses relacionamentos em uma representação espacial muito mais intuitiva.<br><br><strong>Benefícios: <ul><li>Redução da complexidade dos dados;</li><li>Visualização de padrões;</li><li>Descoberta de grupos;</li><li>Identificação de dimensões latentes;</li><li>Apoio à tomada de decisão.</li></div>
+
+<div class="event break"><div class="titleRow"><h3>Onde é utilizado?</h3></div><p class="authors"><strong>O escalonamento multidimensional pode ser aplicado no: <br><div class="titleRow"><h3></strong>Marketing: </div><p class="authors">Mapas de percepção de marcas e produtos<br>Exemplo: <ul><li>Apple;</li><li>Samsung;</li><li>Xiaomi.</li></ul>Dimesões emergentes: <ul><li>Inovação;</li><li>Preço;</li><li>Qualidade percebida.</li><br>O consumidor não fornece diretamente essas dimenssões. O MDS as revela a partir das avaliações.</div>
+
+<div class="event break"><div class="titleRow"><h3>Onde é utilizado?</h3></div><p class="authors"><strong>O escalonamento multidimensional pode ser aplicado na: <br><div class="titleRow"><h3></strong>Psicologia: </div><p class="authors">Representação de conceitos cognitivos<br>Exemplo apresentado por Young: <ul><li>partes do corpo humano;</li><li>percepção infantil do próprio corpo.</li><br>O método revelou uma organização hierárquica desses conceitos<div class="reason">A second example involves a study in developmental psychology. In this
+study the investigator (Jacobowitz, 1975) asked children and adults to judge
+the similarity of various parts of the human body to each other. These judgments
+were used to investigate the nature of a child's conception of the body,
+and the way this conception changes as the child develops into an adult. The
+study actually involved children at three age levels (6, 8, 'and 10 years old),
+as well as college sophomores. Altogether there were 60 subjects, approximately
+15 at each age level. The similarity judgments were made by the subjects
+in the following fashion. The experimenter selected one of the stimuli (a
+human body pan) and designated it as the "standard."<br><br><img class="fit-picture" src="01-Psy-Young.jpg" width="800" height="500" alt="MDS_Psy"</div></div></div>
+
+<div class="event break"><div class="titleRow"><h3>Onde é utilizado?</h3></div><p class="authors"><strong>O escalonamento multidimensional pode ser aplicado na: <br><div class="titleRow"><h3></strong>Ciência Política: </div><p class="authors">Análise dos padrões de votação dos senadores estadunidenses<br>Exemplo apresentado por Young: <ul><li>Democratas x Republicanos;</li><li>Liverais x Conservadores.</li><br>sem que essas categorias fossem explicitamente informadas ao algoritmo<div class="reason">we present a portion of a data
+matrix derived from voting records of U.S. Senators. Each element in this
+matrix represents the proportion of times a pair of Senators voted the same
+way on a variety of issues that came before the Senate in 1970 (the data
+were obtained from Hoadley, 1974). Even a very sophisticated political
+scientists would have to spend considerable effort to directly interpret the
+information as it is displayed in this table. There simply are too many
+numbers to make sense out of the relationships between the Senators' voting
+records.<br><br><img class="fit-picture" src="01-Politics-Young.jpg" width="800" height="600" alt="MDS_Poli"</div></div></div>
+
+<div class="event break"><div class="titleRow"><h3>Algumas aplicações</h3></div><p class="authors"><strong>Basicamente, qualquer matriz de dados é candidata à análise através do método de escalonamento multidimensional, se os dados apresentam forte relação entre as linhas e colunas desta matriz. Ou seja, a matriz apresenta dados de forma a conter uma forte conexão: <br><ul><li>Correlação;</li><li>Distâncias;</li><li>Proximidades;</li><li>Similaridades;</li><li>Classificação (Rating)</li><li>Preferências</li></div>
+
+<div class="event break"><div class="titleRow"><h3>Algumas aplicações: Mapa de Percepção</h3></div><p class="authors"><strong>Geralmente as dimensões já estão definidas, por exemplo</strong>: <br><ul><li>eixo x = preço;</li><li>eixo y = qualidade</li><br><p class="authors">No escalonamento multidimensional, as dimessões não são necessariamente conhecidas e o algoritmo descobre quais características estão organizando os objetos<br><br><svg width="700" height="500">
+
+  <!-- eixos -->
+  <line x1="350" y1="50" x2="350" y2="450"
+        stroke="black" stroke-width="2"/>
+
+  <line x1="50" y1="250" x2="650" y2="250"
+        stroke="black" stroke-width="2"/>
+
+  <!-- marcas -->
+  <circle cx="500" cy="120" r="8" fill="blue"/>
+  <text x="515" y="125">Apple</text>
+
+  <circle cx="450" cy="180" r="8" fill="blue"/>
+  <text x="465" y="185">Samsung</text>
+
+  <circle cx="250" cy="350" r="8" fill="blue"/>
+  <text x="265" y="355">Motorola</text>
+
+</svg></div>
+
+
+<div class="event"><div class="titleRow"><h3>Avaliação de tecnologias emergentes</h3></div><p class="authors"><strong>O QUADRANTE MÁGICO DA GARTNER<ul><li>O Quadrante Mágico da Gartner é uma metodologia de análise de mercado criada pela Gartner que avalia e posiciona fornecedores de tecnologia com base em dois critérios principais: capacidade de execução e completude da visão.</li><li>Os fornecedores são distribuídos em quatro categorias: Líderes (Leaders), Desafiantes (Challengers), Visionários (Visionaries) e Participantes de Nicho (Niche Players), auxiliando organizações na comparação e seleção de soluções tecnológicas.<div class="reason"><img src="03_Magic_Quadrant_for_Business_Orchestration_and_Automation_Technologies.png"  width="800" height="800" alt="Quadrante Mágico - BOAT"></div><br><br><a href="https://www.gartner.com/doc/reprints?id=00ThR00000GVlEOUA1&ct=260918&st=sb" target="_blank">Mais informações</a></div>
+
+<div class="event break"><div class="titleRow"><h3>O Quadrante Mágico: Um falso amigo</h3></div><br>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gartner x MDS</title>
+
+<style>
+    body{
+        font-family: "Segoe UI", Arial, sans-serif;
+        background:#f5f7fa;
+        padding:30px;
+        color:#333;
+    }
+
+    .container{
+        max-width:1200px;
+        margin:auto;
+    }
+
+    h2{
+        text-align:center;
+        color:#1f4e79;
+        margin-bottom:8px;
+    }
+
+    .subtitle{
+        text-align:center;
+        margin-bottom:25px;
+        color:#666;
+        font-style:italic;
+    }
+
+    table{
+        width:100%;
+        border-collapse:collapse;
+        background:white;
+        box-shadow:0 4px 12px rgba(0,0,0,0.1);
+        border-radius:10px;
+        overflow:hidden;
+    }
+
+    thead{
+        background:#1f4e79;
+        color:white;
+    }
+
+    th, td{
+        padding:14px 16px;
+        border-bottom:1px solid #e5e5e5;
+        text-align:left;
+        vertical-align:top;
+    }
+
+    th{
+        font-weight:600;
+    }
+
+    tbody tr:nth-child(even){
+        background:#f8fafc;
+    }
+
+    tbody tr:hover{
+        background:#eef5ff;
+    }
+
+    .gartner{
+        color:#b85450;
+        font-weight:600;
+    }
+
+    .mds{
+        color:#38761d;
+        font-weight:600;
+    }
+
+    .conclusion{
+        margin-top:25px;
+        padding:18px;
+        background:#fff8e1;
+        border-left:6px solid #f4b400;
+        border-radius:6px;
+        font-size:1.05rem;
+        line-height:1.5;
+    }
+
+    @media (max-width:768px){
+        table{
+            font-size:0.9rem;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Por que o Quadrante Mágico da Gartner NÃO é MDS?</h2>
+
+    <p class="subtitle">
+        Apesar da aparência visual semelhante, os fundamentos metodológicos são diferentes.
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Aspecto</th>
+                <th>Quadrante Mágico da Gartner</th>
+                <th>Escalonamento Multidimensional (MDS)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Objetivo</strong></td>
+                <td class="gartner">Classificar fornecedores segundo critérios definidos pela Gartner.</td>
+                <td class="mds">Descobrir padrões de similaridade entre objetos a partir dos dados.</td>
+            </tr>
+
+            <tr>
+                <td><strong>Origem dos eixos</strong></td>
+                <td class="gartner">Eixos previamente definidos: Capacidade de Execução e Completude da Visão.</td>
+                <td class="mds">Eixos emergem matematicamente dos dados.</td>
+            </tr>
+
+            <tr>
+                <td><strong>Método</strong></td>
+                <td class="gartner">Avaliação baseada em critérios e julgamento de especialistas.</td>
+                <td class="mds">Técnica estatística baseada em distâncias ou similaridades.</td>
+            </tr>
+
+            <tr>
+                <td><strong>Posição dos pontos</strong></td>
+                <td class="gartner">Definida pelas pontuações atribuídas pela Gartner.</td>
+                <td class="mds">Calculada por algoritmos para preservar relações entre objetos.</td>
+            </tr>
+
+            <tr>
+                <td><strong>Interpretação dos eixos</strong></td>
+                <td class="gartner">Conhecida antes da análise.</td>
+                <td class="mds">Interpretada somente após a análise.</td>
+            </tr>
+
+            <tr>
+                <td><strong>Papel dos especialistas</strong></td>
+                <td class="gartner">Alto.</td>
+                <td class="mds">Baixo, predominando os dados.</td>
+            </tr>
+
+            <tr>
+                <td><strong>Representação gráfica</strong></td>
+                <td class="gartner">Quatro quadrantes pré-definidos.</td>
+                <td class="mds">Espaço contínuo sem divisões impostas.</td>
+            </tr>
+
+            <tr>
+                <td><strong>Finalidade</strong></td>
+                <td class="gartner">Apoiar decisões de mercado e seleção de fornecedores.</td>
+                <td class="mds">Explorar estruturas latentes e relações perceptuais.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="conclusion">
+        <strong>Conclusão:</strong> Embora o Quadrante Mágico da Gartner tenha aparência semelhante a um mapa perceptual, ele não é resultado de Escalonamento Multidimensional (MDS). No MDS, as dimensões são descobertas a partir dos dados; no Quadrante Mágico, as dimensões são previamente definidas pela Gartner e utilizadas para posicionar os fornecedores.
+    </div>
+
+</div>
+</div>
+
+
+<section class="aula" id="aula2"><div class="aulaHead"><h2>📖Desenvolvimento histórico</h2></div><div class="timeline">
+<div class="event priority"><div class="titleRow"><h3>Fase preliminar: As Raízes Matemáticas da MDS (1936-1938)</h3></div><p class="authors"><strong>Problema<br><br>Nas décadas de 1930 e 1940 surgia um problema fundamental <br><div class="reason">Se conhecemos apenas as relações entre objetos (distâncias, semelhanças ou correlações), seria possível reconstruir uma representação espacial desses objetos?</div><p class="authors">Esse problema aparecia simultaneamente em:<ul><li>psicometria;</li><li>geometria;</li><li>estatística multivariada;</li><li>cartografia</li></ul></div>
+
+<div class="event break"><div class="titleRow"><h3>Marco histórico</h3></div><p class="authors"><strong>Os trabalhos de C. Eckart e G. Young estabeleceram os fundamentos matemáticos da aproximação de matrizes por representações de menor dimensão, fornecendo uma das bases algébricas que posteriormente dariam origem à MDS.<br><br>Contribuição: Primeira conexão formal entre</strong>: <br><ul><li>Matriz de relações;</li><li>Representação geométrica</li><br><br></div>
+<div class="event priority">
+  <div class="titleRow">
+    <h3>Fase 1: O Nascimento da Classical MDS (1952)</h3>
+  </div>
+
+  <p class="authors">
+    <strong>Problema</strong><br><br>
+
+    Durante a década de 1950, pesquisadores em psicologia, educação e ciências sociais acumulavam grandes matrizes de distâncias e similaridades obtidas experimentalmente. Embora esses dados contivessem informações importantes sobre a relação entre objetos, sua interpretação era extremamente difícil.
+
+    <br><br>
+
+    <div class="reason">
+      Como transformar uma matriz de proximidades em uma representação visual capaz de revelar padrões e estruturas latentes?
+    </div>
+
+    <p class="authors">
+
+      Entre os desafios da época estavam:
+
+      <ul>
+        <li>comparar estímulos perceptuais;</li>
+        <li>analisar similaridade entre profissões;</li>
+        <li>estudar relações entre conceitos psicológicos;</li>
+        <li>interpretar grandes matrizes de distâncias.</li>
+      </ul>
+
+      Os pesquisadores possuíam os dados, mas não possuíam uma forma intuitiva de visualizá-los.
+ <div> </div></div>
+ 
+
+<div class="event break">
+  <div class="titleRow">
+    <h3>Fase 2: A Revolução Psicológica (1962-1964)</h3>
+  </div>
+
+  <p class="authors">
+    <strong>Problema</strong><br><br>
+
+    A Classical MDS pressupunha que as distâncias observadas eram quantitativas e precisas. Entretanto, pesquisadores em psicologia perceberam que seres humanos raramente conseguem expressar relações de similaridade em valores numéricos confiáveis.<br><br>
+
+    <div class="reason">
+      Como representar matematicamente percepções humanas quando os indivíduos conseguem comparar estímulos, mas não conseguem fornecer distâncias absolutas?
+    </div>
+
+    <p class="authors">
+      Em experimentos psicológicos, os participantes conseguiam afirmar:
+      <ul>
+        <li>"A é mais parecido com B do que com C";</li>
+        <li>"O estímulo X se parece mais com Y do que com Z";</li>
+        <li>"A marca A é percebida como mais próxima da marca B do que da marca C".</li>
+      </ul>
+
+      Porém, normalmente não conseguiam atribuir medidas quantitativas confiáveis para essas relações.
+    </p>
+  </p>
+</div></div></div>
+
+
+<div class="event break">
+  <div class="titleRow">
+    <h3>Marco histórico</h3>
+  </div>
+
+  <p class="authors">
+    <strong>
+      Os trabalhos de Roger Shepard (1962) e posteriormente Joseph Kruskal (1964) revolucionaram a MDS ao introduzir a ideia de que apenas a ordem das proximidades precisava ser preservada.
+    </strong>
+    <br><br>
+
+    Essa nova abordagem ficou conhecida como <strong>Non-Metric Multidimensional Scaling (NMDS)</strong>.
+    <br><br>
+
+    <strong>Contribuição:</strong>
+
+    <ul>
+      <li>Substituição das distâncias exatas por relações ordinais;</li>
+      <li>Representação de julgamentos subjetivos;</li>
+      <li>Adequação da MDS para pesquisas em psicologia e ciências sociais;</li>
+      <li>Maior robustez para dados perceptuais.</li>
+    </ul>
+
+    <br>
+
+    Antes:
+    <div class="reason">
+      A ↔ B = 3,2<br>
+      A ↔ C = 8,4
+    </div>
+
+    Depois:
+    <div class="reason">
+      A-B é mais próximo que A-C
+    </div>
+
+    <br>
+    <div class="ranks">
+
+<br>
+    Essa mudança transformou a MDS de uma ferramenta predominantemente geométrica em uma metodologia de investigação da percepção humana, tornando-se amplamente utilizada em psicologia cognitiva, comportamento do consumidor, marketing e sociologia.
+  </p>
+</div></div>
+
+<div class="event priority">
+  <div class="titleRow">
+    <h3>Fase 3: O Problema da Qualidade da Representação (1964-1965)</h3>
+  </div>
+
+  <p class="authors">
+    <strong>Problema</strong><br><br>
+
+    Com a popularização da MDS, uma nova questão surgiu. Diferentes soluções podiam ser obtidas para um mesmo conjunto de dados, especialmente quando eram utilizadas diferentes dimensionalidades.
+
+    <br><br>
+
+    <div class="reason">
+      Como avaliar se o mapa gerado representa adequadamente as proximidades observadas?
+    </div>
+
+    <p class="authors">
+
+      Os pesquisadores precisavam responder questões como:
+
+      <ul>
+        <li>O mapa de duas dimensões é suficiente?</li>
+        <li>Uma solução em três dimensões é melhor?</li>
+        <li>Quanto da informação original foi preservada?</li>
+        <li>Como comparar soluções diferentes?</li>
+      </ul>
+
+    </p>
+  </p>
+</div>
+
+<div class="event break">
+
+  <div class="titleRow">
+    <h3>Marco histórico</h3>
+  </div>
+
+  <p class="authors">
+
+    <strong>
+      Joseph Kruskal introduziu o conceito de Stress, uma medida capaz de quantificar a discrepância entre as proximidades observadas e as distâncias reproduzidas pela configuração espacial.
+    </strong>
+
+    <br><br>
+
+    <strong>Contribuição:</strong>
+
+    <ul>
+      <li>Criação da principal métrica de ajuste da MDS;</li>
+      <li>Comparação objetiva entre modelos concorrentes;</li>
+      <li>Definição de critérios para escolha da dimensionalidade;</li>
+      <li>Formalização do conceito de qualidade da representação.</li>
+    </ul>
+
+    <br>
+
+    <div class="reason">
+      Stress baixo = boa representação<br>
+      Stress alto = representação inadequada
+    </div>
+
+
+    <br>
+
+    A introdução do Stress transformou a MDS de uma técnica de visualização em um verdadeiro modelo quantitativo passível de validação científica.<br><br>
+
+    <img class="fit-picture" src="04-Shepard_diagram_NMDS.png" width="800" height="600" alt="NMDS_Sheppard"</div>
+    <br><br>
+    <img class="fit-picture" src="05-Shepard_diagram_MMDS.png" width="800" height="600" alt="NMDS_Sheppard"</div>
+
+  </p>
+
+</div>
+
+<div class="event priority">
+
+  <div class="titleRow">
+    <h3>Fase 4: Diferenças Individuais e o Modelo INDSCAL (1970-1972)</h3>
+  </div>
+
+  <p class="authors">
+
+    <strong>Problema</strong><br><br>
+
+    As aplicações em marketing e psicologia mostravam que indivíduos diferentes frequentemente percebiam os mesmos objetos de maneiras distintas.
+
+    <br><br>
+
+    <div class="reason">
+      Como representar simultaneamente uma estrutura comum e as diferenças individuais de percepção?
+    </div>
+
+    <p class="authors">
+
+      Exemplos típicos:
+
+      <ul>
+        <li>Consumidores valorizando atributos diferentes de um produto;</li>
+        <li>Pessoas interpretando estímulos visuais de maneira distinta;</li>
+        <li>Diferenças culturais afetando julgamentos de similaridade.</li>
+      </ul>
+<br><br>
+
+      A necessidade de incorporar essas diferenças individuais levou ao desenvolvimento de modelos mais sofisticados de MDS.<svg width="500" height="250">
+
+<circle cx="250" cy="130"
+r="80"
+fill="none"
+stroke="#ccc"/>
+
+<line x1="250" y1="130"
+x2="320" y2="60"
+stroke="red"/>
+
+<line x1="250" y1="130"
+x2="170" y2="150"
+stroke="blue"/>
+
+<text x="330" y="60">
+Pessoa A
+</text>
+
+<text x="120" y="160">
+Pessoa B
+</text>
+
+</svg>
+<br><br>
+
+      A figura acima ilustra como duas pessoas podem perceber a mesma configuração de objetos de maneira diferente, resultando em representações espaciais distintas.
+    </p>
+
+  </p>
+
+</div>
+
+<div class="event break">
+
+  <div class="titleRow">
+    <h3>Marco histórico</h3>
+  </div>
+
+  <p class="authors">
+
+    <strong>
+      J. Douglas Carroll e Jih-Jie Chang desenvolveram o modelo INDSCAL (Individual Differences Scaling), incorporando pesos individuais às dimensões da representação.
+    </strong>
+
+    <br><br>
+
+    <strong>Contribuição:</strong>
+
+    <ul>
+      <li>Representação simultânea de múltiplos indivíduos;</li>
+      <li>Modelagem das variações perceptuais;</li>
+      <li>Introdução de pesos dimensionais individuais;</li>
+      <li>Ampliação das aplicações em marketing e ciências comportamentais.</li>
+    </ul>
+
+    <br>
+
+    <div class="reason">
+      Estrutura Comum<br>
+      +<br>
+      Importâncias Individuais
+    </div>
+
+    <br>
+
+    O INDSCAL inaugurou uma nova linha de pesquisa focada na análise de diferenças individuais dentro da estrutura da MDS.
+
+  </p>
+
+</div>
+
+<div class="event priority">
+
+  <div class="titleRow">
+    <h3>Fase 5: A Expansão Computacional (1970-1985)</h3>
+  </div>
+
+  <p class="authors">
+
+    <strong>Problema</strong><br><br>
+
+    O aumento do poder computacional permitiu coletar conjuntos de dados maiores e mais complexos, expondo limitações dos métodos tradicionais.
+
+    <br><br>
+
+    <div class="reason">
+      Como adaptar a MDS para lidar com grandes volumes de dados e novas estruturas de relacionamento?
+    </div>
+
+    <p class="authors">
+
+      Novos desafios envolviam:
+
+      <ul>
+        <li>dados assimétricos;</li>
+        <li>preferências individuais;</li>
+        <li>julgamentos condicionais;</li>
+        <li>grandes matrizes de proximidade.</li>
+      </ul>
+
+    </p>
+
+  </p>
+
+</div>
+
+<div class="event break">
+
+  <div class="titleRow">
+    <h3>Marco histórico</h3>
+  </div>
+
+  <p class="authors">
+
+    <strong>
+      Diversos pesquisadores, especialmente Forrest Young, Yoshio Takane e Jan de Leeuw, expandiram significativamente a família de métodos MDS.
+    </strong>
+
+    <br><br>
+
+    <strong>Principais avanços:</strong>
+
+    <ul>
+      <li>ALSCAL;</li>
+      <li>Weighted MDS;</li>
+      <li>Modelos de unfolding;</li>
+      <li>MDS por máxima verossimilhança;</li>
+      <li>Modelos para dados complexos.</li>
+    </ul>
+
+    <br>
+
+    <div class="reason">
+      A MDS deixa de ser um método único e passa a ser uma família de técnicas de modelagem.
+    </div>
+
+    <br>
+
+    Este período é frequentemente considerado a "era de ouro" da MDS psicométrica.
+
+  </p>
+
+</div>
+
+<div class="event priority">
+
+  <div class="titleRow">
+    <h3>Fase 6: Da Exploração ao Teste de Hipóteses (1980-1995)</h3>
+  </div>
+
+  <p class="authors">
+
+    <strong>Problema</strong><br><br>
+
+    Até então, a maior parte dos estudos utilizando MDS possuía caráter exploratório.
+
+    <br><br>
+
+    <div class="reason">
+      Como utilizar a MDS para avaliar teorias e hipóteses previamente definidas?
+    </div>
+
+    <p class="authors">
+
+      Os pesquisadores desejavam responder:
+
+      <ul>
+        <li>A teoria proposta é compatível com os dados?</li>
+        <li>A configuração deve obedecer determinada estrutura?</li>
+        <li>É possível restringir o espaço perceptual?</li>
+      </ul>
+
+    </p>
+
+  </p>
+
+</div>
+
+<div class="event break">
+
+  <div class="titleRow">
+    <h3>Marco histórico</h3>
+  </div>
+
+  <p class="authors">
+
+    <strong>
+      Surgem os modelos de Constrained MDS e Confirmatory MDS, permitindo impor restrições geométricas e testar hipóteses sobre a estrutura dos dados.
+    </strong>
+
+    <br><br>
+
+    <strong>Contribuição:</strong>
+
+    <ul>
+      <li>Introdução da abordagem confirmatória;</li>
+      <li>Teste formal de teorias cognitivas;</li>
+      <li>Validação de modelos psicológicos;</li>
+      <li>Maior rigor inferencial.</li>
+    </ul>
+
+    <br>
+
+    <div class="reason">
+      Explorar estruturas
+      →
+      Testar teorias
+    </div>
+
+    <br>
+
+    Essa mudança aproximou a MDS dos métodos estatísticos voltados à inferência científica.
+
+  </p>
+
+</div>
+
+<div class="event priority">
+
+  <div class="titleRow">
+    <h3>Fase 7: O Desafio Não Linear (1998-2005)</h3>
+  </div>
+
+  <p class="authors">
+
+    <strong>Problema</strong><br><br>
+
+    Muitos conjuntos de dados passaram a apresentar estruturas curvas ou não lineares, impossíveis de representar adequadamente mediante distâncias euclidianas tradicionais.
+
+    <br><br>
+
+    <div class="reason">
+      Como preservar a geometria real dos dados quando eles estão distribuídos sobre superfícies ou variedades complexas?
+    </div>
+
+    <p class="authors">
+
+      Exemplos incluem:
+
+      <ul>
+        <li>imagens digitais;</li>
+        <li>formas geométricas;</li>
+        <li>dados biológicos;</li>
+        <li>estruturas de alta dimensionalidade.</li>
+      </ul>
+
+    </p>
+
+  </p>
+
+</div>
+
+<div class="event break">
+
+  <div class="titleRow">
+    <h3>Marco histórico</h3>
+  </div>
+
+  <p class="authors">
+
+    <strong>
+      Surgem métodos baseados em distâncias geodésicas, culminando no desenvolvimento do Isomap e de modelos relacionados à aprendizagem de variedades.
+    </strong>
+
+    <br><br>
+
+    <strong>Contribuição:</strong>
+
+    <ul>
+      <li>Preservação de estruturas não lineares;</li>
+      <li>Uso de distâncias geodésicas;</li>
+      <li>Integração da MDS com Machine Learning;</li>
+      <li>Base para técnicas modernas de redução dimensional.</li>
+    </ul>
+
+    <br>
+
+    <div class="reason">
+      Distância Euclidiana
+      →
+      Distância ao longo da superfície
+    </div>
+
+    <br>
+
+    Esta fase marcou a aproximação definitiva entre a MDS e a moderna ciência de dados.
+
+  </p>
+
+</div>
+
+<div class="event priority">
+
+  <div class="titleRow">
+    <h3>Fase 8: A Era da Ciência de Dados (2005-Presente)</h3>
+  </div>
+
+  <p class="authors">
+
+    <strong>Problema</strong><br><br>
+
+    A explosão do volume de dados gerou novos desafios de visualização, interpretação e redução de dimensionalidade.
+
+    <br><br>
+
+    <div class="reason">
+      Como representar e explorar conjuntos de dados massivos contendo centenas ou milhares de variáveis?
+    </div>
+
+    <p class="authors">
+
+      Contextos modernos incluem:
+
+      <ul>
+        <li>bioinformática;</li>
+        <li>genômica;</li>
+        <li>redes sociais;</li>
+        <li>sistemas de recomendação;</li>
+        <li>internet das coisas;</li>
+        <li>inteligência artificial.</li>
+      </ul>
+
+    </p>
+
+  </p>
+
+</div>
+
+<div class="event break">
+
+  <div class="titleRow">
+    <h3>Marco histórico</h3>
+  </div>
+
+  <p class="authors">
+
+    <strong>
+      A MDS passa a integrar o conjunto de técnicas modernas de redução dimensional, visualização exploratória e análise de estruturas complexas.
+    </strong>
+
+    <br><br>
+
+    <strong>Contribuição:</strong>
+
+    <ul>
+      <li>Visualização de dados de alta dimensionalidade;</li>
+      <li>Análise exploratória em Machine Learning;</li>
+      <li>Integração com algoritmos de inteligência artificial;</li>
+      <li>Aplicação em redes, sensores e biologia computacional.</li>
+    </ul>
+
+    <br>
+
+    <div class="reason">
+      Psicometria
+      →
+      Ciência de Dados
+      →
+      Inteligência Artificial
+    </div>
+
+    <br>
+
+    A trajetória iniciada com a reconstrução geométrica de matrizes de proximidade evoluiu para um conjunto de ferramentas fundamentais para análise de dados complexos no século XXI.
+
+  </p>
+
+</div>
+
+<div class="event summary">
+
+  <div class="titleRow">
+    <h3>Resumo da Evolução Histórica da Multidimensional Scaling (MDS)</h3>
+  </div>
+
+  <table class="timelineTable">
+
+    <thead>
+      <tr>
+        <th>Fase</th>
+        <th>Período</th>
+        <th>Pesquisadores</th>
+        <th>Pergunta Principal</th>
+        <th>Principal Contribuição</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td>Fase Preliminar</td>
+        <td>1936-1938</td>
+        <td>Eckart & Young</td>
+        <td>É possível reconstruir um espaço a partir de relações entre objetos?</td>
+        <td>Fundamentos matemáticos da aproximação matricial e redução dimensional.</td>
+      </tr>
+
+      <tr>
+        <td>Fase 1</td>
+        <td>1952</td>
+        <td>Torgerson</td>
+        <td>Como transformar matrizes de distâncias em mapas espaciais?</td>
+        <td>Criação da Classical Multidimensional Scaling (CMDS).</td>
+      </tr>
+
+      <tr>
+        <td>Fase 2</td>
+        <td>1962-1964</td>
+        <td>Shepard & Kruskal</td>
+        <td>Como representar similaridades subjetivas sem exigir distâncias exatas?</td>
+        <td>Desenvolvimento da Non-Metric MDS (NMDS).</td>
+      </tr>
+
+      <tr>
+        <td>Fase 3</td>
+        <td>1964-1965</td>
+        <td>Kruskal</td>
+        <td>Como avaliar a qualidade da representação espacial?</td>
+        <td>Introdução da medida de ajuste Stress.</td>
+      </tr>
+
+      <tr>
+        <td>Fase 4</td>
+        <td>1970-1972</td>
+        <td>Carroll & Chang</td>
+        <td>Como modelar diferenças individuais de percepção?</td>
+        <td>Criação do modelo INDSCAL.</td>
+      </tr>
+
+      <tr>
+        <td>Fase 5</td>
+        <td>1970-1985</td>
+        <td>Young, Takane, De Leeuw e colaboradores</td>
+        <td>Como ampliar a MDS para problemas mais complexos?</td>
+        <td>ALSCAL, WMDS, Unfolding e modelos probabilísticos.</td>
+      </tr>
+
+      <tr>
+        <td>Fase 6</td>
+        <td>1980-1995</td>
+        <td>Diversos pesquisadores</td>
+        <td>Como utilizar MDS para testar hipóteses teóricas?</td>
+        <td>Constrained MDS e Confirmatory MDS.</td>
+      </tr>
+
+      <tr>
+        <td>Fase 7</td>
+        <td>1998-2005</td>
+        <td>Tenenbaum, De Silva e outros</td>
+        <td>Como representar estruturas não lineares?</td>
+        <td>Isomap, GMDS e métodos baseados em geodésicas.</td>
+      </tr>
+
+      <tr>
+        <td>Fase 8</td>
+        <td>2005-Presente</td>
+        <td>Comunidade de Machine Learning e Data Science</td>
+        <td>Como explorar dados massivos e alta dimensionalidade?</td>
+        <td>Integração da MDS com IA, análise de redes e ciência de dados.</td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
+
+
+
+<section class="aula" id="aula3"><div class="aulaHead"><h2>🟰Desenvolvimento algébrico</span></div><div class="timeline">
+
+
+<div class="event priority">
+
+    <div class="titleRow">
+        <h3>Medidas de Similaridade e Dissimilaridade</h3>
+    </div>
+
+    <p class="authors">
+
+        O Escalonamento Multidimensional (MDS) não opera diretamente sobre os dados originais, mas sobre uma estrutura de proximidade entre os objetos analisados.
+
+        <br><br>
+
+        Essa proximidade pode ser expressa por medidas de similaridade ou dissimilaridade.
+
+        <br><br>
+
+        Medidas de similaridade atribuem valores maiores a objetos mais parecidos.
+
+        <br><br>
+
+        Medidas de dissimilaridade atribuem valores menores a objetos mais parecidos e valores maiores a objetos mais distintos.
+
+        <br><br>
+
+        A forma mais comum de dissimilaridade é a distância matemática.
+
+    </p>
+
+</div>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>Definição Formal de Distância</h3>
+    </div>
+
+    <p class="authors">
+
+        Seja
+
+        \[
+        d:\mathbb{R}^{p}\times \mathbb{R}^{p}
+        \rightarrow
+        \mathbb{R}_{+}
+        \]
+
+        uma função que associa um valor real não negativo a cada par de objetos.
+
+        <br><br>
+
+        Para que uma função seja considerada uma distância métrica, ela deve satisfazer os seguintes axiomas:
+
+        \[
+        d(\mathbf{x}_{i},\mathbf{x}_{j})\ge 0
+        \]
+
+        (não negatividade)
+
+        <br><br>
+
+        \[
+        d(\mathbf{x}_{i},\mathbf{x}_{j})=0
+        \Longleftrightarrow
+        \mathbf{x}_{i}=\mathbf{x}_{j}
+        \]
+
+        (identidade dos indiscerníveis)
+
+        <br><br>
+
+        \[
+        d(\mathbf{x}_{i},\mathbf{x}_{j})
+        =
+        d(\mathbf{x}_{j},\mathbf{x}_{i})
+        \]
+
+        (simetria)
+
+        <br><br>
+
+        \[
+        d(\mathbf{x}_{i},\mathbf{x}_{k})
+        \le
+        d(\mathbf{x}_{i},\mathbf{x}_{j})
+        +
+        d(\mathbf{x}_{j},\mathbf{x}_{k})
+        \]
+
+        (desigualdade triangular)
+
+    </p>
+
+</div>
+
+<div class="event priority">
+
+    <div class="titleRow">
+        <h3>Distância Euclidiana</h3>
+    </div>
+
+    <p class="authors">
+
+        A distância Euclidiana corresponde à distância em linha reta entre dois pontos em um espaço vetorial.
+
+        <br><br>
+
+        Sejam
+
+        \[
+        \mathbf{x}_{i}
+        =
+        (x_{i1},x_{i2},\ldots,x_{ip})^{T}
+        \]
+
+        e
+
+        \[
+        \mathbf{x}_{j}
+        =
+        (x_{j1},x_{j2},\ldots,x_{jp})^{T}.
+        \]
+
+        <br><br>
+
+        A distância Euclidiana é definida por
+
+        \[
+        d_E(\mathbf{x}_i,\mathbf{x}_j)
+        =
+        \sqrt{
+        \sum_{k=1}^{p}
+        (x_{ik}-x_{jk})^{2}
+        }.
+        \]
+
+        <br><br>
+
+        De forma equivalente:
+
+        \[
+        d_E(\mathbf{x}_i,\mathbf{x}_j)
+        =
+        \sqrt{
+        (\mathbf{x}_{i}-\mathbf{x}_{j})^{T}
+        (\mathbf{x}_{i}-\mathbf{x}_{j})
+        }.
+        \]
+
+        <br><br>
+
+        A formulação clássica do Escalonamento Multidimensional pressupõe que as distâncias observadas sejam Euclidianas ou, pelo menos, possam ser adequadamente aproximadas por uma geometria Euclidiana.
+
+    </p>
+
+</div>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>Distância Manhattan (City Block)</h3>
+    </div>
+
+    <p class="authors">
+
+        Em muitas aplicações, o deslocamento entre dois pontos não ocorre em linha reta.
+
+        <br><br>
+
+        Nesses casos pode ser mais apropriado utilizar a distância Manhattan, também conhecida como distância City Block.
+
+        <br><br>
+
+        Sua definição é:
+
+        \[
+        d_{M}
+        (\mathbf{x}_{i},\mathbf{x}_{j})
+        =
+        \sum_{k=1}^{p}
+        \left|
+        x_{ik}-x_{jk}
+        \right|.
+        \]
+
+        <br><br>
+
+        Geometricamente, essa métrica corresponde ao percurso realizado em ruas ortogonais de uma cidade em formato de grade.
+
+        <br><br>
+
+        Ao contrário da distância Euclidiana, não existe aplicação direta da relação pitagórica utilizada no desenvolvimento clássico da MDS.
+
+    </p>
+
+</div>
+
+<div class="event priority">
+
+    <div class="titleRow">
+        <h3>Distância de Minkowski</h3>
+    </div>
+
+    <p class="authors">
+
+        A distância de Minkowski representa uma família de métricas que engloba diversas medidas conhecidas.
+
+        <br><br>
+
+        Sua definição geral é
+
+        \[
+        d_q
+        (\mathbf{x}_{i},\mathbf{x}_{j})
+        =
+        \left(
+        \sum_{k=1}^{p}
+        w_k
+        \left|
+        x_{ik}-x_{jk}
+        \right|^q
+        \right)^{1/q},
+        \qquad q\ge 1.
+        \]
+
+        <br><br>
+
+        onde:
+
+        \[
+        w_k
+        \]
+
+        representa o peso atribuído à variável \(k\);
+
+        <br><br>
+
+        e
+
+        \[
+        q
+        \]
+
+        controla a forma geométrica da métrica.
+
+    </p>
+
+</div>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>Casos Particulares da Métrica de Minkowski</h3>
+    </div>
+
+    <table class="timelineTable">
+
+        <tr>
+            <th>Valor de q</th>
+            <th>Resultado</th>
+        </tr>
+
+        <tr>
+            <td>\(q=1\)</td>
+            <td>Distância Manhattan</td>
+        </tr>
+
+        <tr>
+            <td>\(q=2\)</td>
+            <td>Distância Euclidiana</td>
+        </tr>
+
+        <tr>
+            <td>\(q\rightarrow\infty\)</td>
+            <td>Distância de Chebyshev</td>
+        </tr>
+
+    </table>
+
+    <br>
+
+    <div class="reason">
+
+        Manhattan ⊂ Minkowski
+
+        <br>
+
+        Euclidiana ⊂ Minkowski
+
+        <br>
+
+        Chebyshev ⊂ Minkowski
+
+    </div>
+
+</div>
+
+<div class="event summary">
+
+    <div class="titleRow">
+        <h3>Por que a Distância Euclidiana é Especial para a MDS Clássica?</h3>
+    </div>
+
+    <p class="authors">
+
+        O desenvolvimento algébrico da Classical Multidimensional Scaling (CMDS) depende da relação entre distâncias e produtos internos.
+
+        <br><br>
+
+        Essa relação decorre diretamente do Teorema de Pitágoras e da geometria Euclidiana.
+
+        <br><br>
+
+        Consequentemente, apenas para distâncias Euclidianas é possível reconstruir rigorosamente uma matriz de produtos internos
+
+        \[
+        \mathbf{B}
+        =
+        \mathbf{X}
+        \mathbf{X}^{T},
+        \]
+
+        permitindo a aplicação da dupla centralização e da decomposição espectral.
+
+        <br><br>
+
+        A partir desse resultado, inicia-se a derivação matemática do Escalonamento Multidimensional Clássico.
+
+    </p>
+
+</div>
+
+<div class="event priority">
+
+    <div class="titleRow">
+        <h3>Comparação entre as Distâncias Euclidiana, Manhattan e Minkowski</h3>
+    </div>
+
+    <p class="authors">
+
+        As diferentes métricas medem a dissimilaridade entre objetos segundo geometrias distintas.
+
+        <br><br>
+
+        Embora todas satisfaçam os axiomas de distância métrica, cada uma produz uma interpretação geométrica específica do espaço dos dados.
+
+    </p>
+
+    <table class="timelineTable">
+
+        <thead>
+            <tr>
+                <th>Métrica</th>
+                <th>Fórmula</th>
+                <th>Interpretação</th>
+                <th>Aplicações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Euclidiana</td>
+                <td>
+                    \( d_E(\mathbf{x}_i,\mathbf{x}_j)=
+                    \sqrt{
+                    \sum_{k=1}^{p}
+                    (x_{ik}-x_{jk})^2}
+                    \)
+                </td>
+
+                <td>
+                    Distância em linha reta.
+                </td>
+
+                <td>
+                    PCA, CMDS, geometria Euclidiana.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Manhattan</td>
+
+                <td>
+                    \(
+                    d_M(\mathbf{x}_i,\mathbf{x}_j)=
+                    \sum_{k=1}^{p}
+                    |x_{ik}-x_{jk}|
+                    \)
+                </td>
+
+                <td>
+                    Soma dos deslocamentos por eixo.
+                </td>
+
+                <td>
+                    Dados esparsos, logística e otimização.
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>Minkowski</td>
+
+                <td>
+                    \(
+                    d_q(\mathbf{x}_i,\mathbf{x}_j)
+                    =
+                    \left(
+                    \sum_{k=1}^{p}
+                    w_k
+                    |x_{ik}-x_{jk}|^q
+                    \right)^{1/q}
+                    \)
+                </td>
+
+                <td>
+                    Generalização das métricas anteriores.
+                </td>
+
+                <td>
+                    Machine Learning e métricas customizadas.
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>Exemplo: Distância Euclidiana</h3>
+    </div>
+
+    <p class="authors">
+
+        Considere os vetores
+
+        \[
+        \mathbf{x}_{1}
+        =
+        \begin{bmatrix}
+        2\\
+        4
+        \end{bmatrix}
+        ,
+        \qquad
+        \mathbf{x}_{2}
+        =
+        \begin{bmatrix}
+        8\\
+        10
+        \end{bmatrix}
+        .
+        \]
+
+        Aplicando a definição:
+
+        \[
+        d_E
+        =
+        \sqrt{
+        (8-2)^2
+        +
+        (10-4)^2
+        }
+        \]
+
+        \[
+        =
+        \sqrt{
+        36
+        +
+        36
+        }
+        \]
+
+        \[
+        =
+        \sqrt{72}
+        \]
+
+        \[
+        \approx 8,49
+        \]
+
+        A distância corresponde ao segmento de reta ligando os dois pontos.
+
+    </p>
+
+</div>
+
+<div class="event priority">
+
+    <div class="titleRow">
+        <h3>Exemplo: Distância Manhattan</h3>
+    </div>
+
+    <p class="authors">
+
+        Utilizando os mesmos pontos:
+
+        \[
+        d_M
+        =
+        |8-2|
+        +
+        |10-4|
+        \]
+
+        \[
+        =
+        6
+        +
+        6
+        \]
+
+        \[
+        =12
+        \]
+
+        Nesta métrica o deslocamento é realizado por etapas ao longo dos eixos coordenados.
+
+    </p>
+
+</div>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>Exemplo: Distância de Minkowski</h3>
+    </div>
+
+    <p class="authors">
+
+        Consideremos
+
+        \[
+        q=3
+        \]
+
+        e pesos iguais:
+
+        \[
+        w_1=w_2=1.
+        \]
+
+        Assim:
+
+        \[
+        d_3=
+        \left(
+        |8-2|^3
+        +
+        |10-4|^3
+        \right)^{1/3}
+        \]
+
+        \[
+        =
+        \left(
+        216
+        +
+        216
+        \right)^{1/3}
+        \]
+
+        \[
+        =
+        432^{1/3}
+        \]
+
+        \[
+        \approx 7,56
+        \]
+
+        O parâmetro \(q\) controla a geometria do espaço e a sensibilidade a discrepâncias entre componentes.
+
+    </p>
+
+</div>
+
+<div class="event summary">
+
+    <div class="titleRow">
+        <h3>Resumo dos Resultados</h3>
+    </div>
+
+    <table class="timelineTable">
+
+        <thead>
+            <tr>
+                <th>Métrica</th>
+                <th>Valor Obtido</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Euclidiana</td>
+                <td>8,49</td>
+            </tr>
+
+            <tr>
+                <td>Manhattan</td>
+                <td>12,00</td>
+            </tr>
+
+            <tr>
+                <td>Minkowski (\(q=3\))</td>
+                <td>7,56</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<div class="event warning">
+
+    <div class="titleRow">
+        <h3>Por que a Distância Euclidiana é Utilizada na CMDS?</h3>
+    </div>
+
+    <p class="authors">
+
+        A dedução algébrica do Escalonamento Multidimensional Clássico depende da expansão:
+
+        \[
+        d_{ij}^{2}
+        =
+        \|\mathbf{x}_i\|^2
+        +
+        \|\mathbf{x}_j\|^2
+        -
+        2\mathbf{x}_i^{T}\mathbf{x}_j.
+        \]
+
+        Essa identidade decorre diretamente da geometria Euclidiana e do produto interno.
+
+        <br><br>
+
+        Por essa razão, a formulação clássica do MDS reconstrói uma matriz de produtos internos
+
+        \[
+        \mathbf{B}
+        =
+        \mathbf{X}\mathbf{X}^{T},
+        \]
+
+        permitindo aplicar a dupla centralização e a decomposição espectral que serão desenvolvidas na próxima seção. 【2-0c031c】【3-1d801a】
+
+    </p>
+
+</div>
+
+
+
+<h2>Exemplo Numérico: Capitais da Região Sudeste do Brasil</h2>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>Exemplo Utilizado ao Longo do Texto</h3>
+    </div>
+
+    <p class="authors">
+
+        Para ilustrar os conceitos apresentados, utilizaremos duas capitais da Região Sudeste do Brasil:
+
+        \[
+        \text{São Paulo (SP)}
+        \qquad
+        \text{e}
+        \qquad
+        \text{Rio de Janeiro (RJ)}.
+        \]
+
+        <br><br>
+
+        Considere a seguinte representação bidimensional simplificada:
+
+        \[
+        \mathbf{x}_{SP}
+        =
+        \begin{bmatrix}
+        0\\
+        0
+        \end{bmatrix}
+        ,
+        \qquad
+        \mathbf{x}_{RJ}
+        =
+        \begin{bmatrix}
+        300\\
+        193.495
+        \end{bmatrix}.
+        \]
+
+        <br>
+
+        Essa configuração foi escolhida de forma que a distância Euclidiana entre as cidades seja aproximadamente:
+
+        \[
+        d(SP,RJ)
+        =
+        357
+        \text{ km}.
+        \]
+
+    </p>
+
+</div>
+
+<div class="event priority">
+
+    <div class="titleRow">
+        <h3>Distância Euclidiana</h3>
+    </div>
+
+    <p class="authors">
+
+        A distância Euclidiana corresponde ao menor caminho em linha reta entre dois pontos.
+
+        <br><br>
+
+        Sua definição geral é:
+
+        \[
+        d_E(\mathbf{x}_i,\mathbf{x}_j)
+        =
+        \sqrt{
+        \sum_{k=1}^{p}
+        \left(
+        x_{ik}-x_{jk}
+        \right)^2
+        }.
+        \]
+
+        <br>
+
+        Aplicando ao caso das cidades:
+
+        \[
+        d_E(SP,RJ)
+        =
+        \sqrt{
+        (300-0)^2
+        +
+        (193.495-0)^2
+        }.
+        \]
+
+        \[
+        =
+        \sqrt{
+        90\,000
+        +
+        37\,449.315
+        }.
+        \]
+
+        \[
+        =
+        \sqrt{
+        127\,449.315
+        }.
+        \]
+
+        \[
+        d_E(SP,RJ)
+        \approx
+        357.0
+        \text{ km}.
+        \]
+
+    </p>
+
+</div>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>Distância Manhattan (City Block)</h3>
+    </div>
+
+    <p class="authors">
+
+        A distância Manhattan corresponde à soma das diferenças absolutas em cada dimensão.
+
+        <br><br>
+
+        Sua definição é:
+
+        \[
+        d_M(\mathbf{x}_i,\mathbf{x}_j)
+        =
+        \sum_{k=1}^{p}
+        \left|
+        x_{ik}-x_{jk}
+        \right|.
+        \]
+
+        <br>
+
+        Para São Paulo e Rio de Janeiro:
+
+        \[
+        d_M(SP,RJ)
+        =
+        |300-0|
+        +
+        |193.495-0|.
+        \]
+
+        \[
+        =
+        300
+        +
+        193.495.
+        \]
+
+        \[
+        d_M(SP,RJ)
+        =
+        493.495
+        \text{ km}.
+        \]
+
+        <br>
+
+        Nesta métrica, o deslocamento é realizado paralelamente aos eixos coordenados, simulando percursos ortogonais semelhantes aos quarteirões de uma cidade.
+
+    </p>
+
+</div>
+
+<div class="event priority">
+
+    <div class="titleRow">
+        <h3>Distância de Minkowski</h3>
+    </div>
+
+    <p class="authors">
+
+        A distância de Minkowski generaliza diversas métricas conhecidas.
+
+        <br><br>
+
+        Sua forma geral é:
+
+        \[
+        d_q
+        (\mathbf{x}_i,\mathbf{x}_j)
+        =
+        \left(
+        \sum_{k=1}^{p}
+        w_k
+        \left|
+        x_{ik}-x_{jk}
+        \right|^q
+        \right)^{1/q}.
+        \]
+
+        <br>
+
+        Considerando:
+
+        \[
+        q=3,
+        \qquad
+        w_1=w_2=1,
+        \]
+
+        obtemos:
+
+        \[
+        d_3(SP,RJ)
+        =
+        \left(
+        300^3
+        +
+        193.495^3
+        \right)^{1/3}.
+        \]
+
+        \[
+        =
+        \left(
+        27\,000\,000
+        +
+        7\,244\,777
+        \right)^{1/3}.
+        \]
+
+        \[
+        =
+        \left(
+        34\,244\,777
+        \right)^{1/3}.
+        \]
+
+        \[
+        d_3(SP,RJ)
+        \approx
+        324.76
+        \text{ km}.
+        \]
+
+        <br>
+
+        O parâmetro \(q\) controla a geometria da métrica e a influência das maiores discrepâncias observadas.
+
+    </p>
+
+</div>
+
+<div class="event summary">
+
+    <div class="titleRow">
+        <h3>Comparação das Métricas</h3>
+    </div>
+
+    <table class="timelineTable">
+
+        <thead>
+
+            <tr>
+                <th>Métrica</th>
+                <th>Expressão Matemática</th>
+                <th>Resultado</th>
+                <th>Interpretação</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+                <td>
+                    Euclidiana
+                </td>
+
+                <td>
+
+                    \[
+                    d_E
+                    =
+                    \sqrt{
+                    \sum
+                    (x_i-x_j)^2
+                    }
+                    \]
+
+                </td>
+
+                <td>
+                    357.00 km
+                </td>
+
+                <td>
+                    Menor caminho em linha reta.
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Manhattan
+                </td>
+
+                <td>
+
+                    \[
+                    d_M
+                    =
+                    \sum
+                    |x_i-x_j|
+                    \]
+
+                </td>
+
+                <td>
+                    493.50 km
+                </td>
+
+                <td>
+                    Soma dos deslocamentos em cada eixo.
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Minkowski (\(q=3\))
+                </td>
+
+                <td>
+
+                    \[
+                    d_q
+                    =
+                    \left(
+                    \sum
+                    |x_i-x_j|^q
+                    \right)^{1/q}
+                    \]
+
+                </td>
+
+                <td>
+                    324.76 km
+                </td>
+
+                <td>
+                    Generalização das métricas anteriores.
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<div class="event warning">
+
+    <div class="titleRow">
+        <h3>Por que a Distância Euclidiana é Fundamental para a CMDS?</h3>
+    </div>
+
+    <p class="authors">
+
+        Embora diferentes métricas possam ser utilizadas para construir matrizes de proximidade, a formulação clássica da MDS depende da geometria Euclidiana.
+
+        <br><br>
+
+        O desenvolvimento algébrico da CMDS utiliza a identidade:
+
+        \[
+        d_{ij}^{2}
+        =
+        \Vert
+        \mathbf{x}_i
+        -
+        \mathbf{x}_j
+        \Vert^{2}
+        =
+        \mathbf{x}_i^{T}\mathbf{x}_i
+        +
+        \mathbf{x}_j^{T}\mathbf{x}_j
+        -
+        2\mathbf{x}_i^{T}\mathbf{x}_j.
+        \]
+
+        <br>
+
+        Essa relação conecta distâncias e produtos internos, permitindo reconstruir a matriz de Gram:
+
+        \[
+        \mathbf{B}
+        =
+        \mathbf{X}
+        \mathbf{X}^{T}.
+        \]
+
+        <br>
+
+        A partir desse resultado será possível derivar a fórmula central do Escalonamento Multidimensional Clássico:
+
+        \[
+        \mathbf{B}
+        =
+        -\frac{1}{2}
+        \mathbf{H}
+        \mathbf{D}^{(2)}
+        \mathbf{H}.
+        \]
+
+        <br>
+
+        Esta será a base para a reconstrução das coordenadas espaciais das capitais utilizando apenas a matriz de distâncias observadas.
+
+    </p>
+
+</div>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>Seriamos aprovados no ensino médio?</h3>
+    </div>
+
+
+<img class="fit-picture" src="13-ENEM.jpeg" width="600" height="600" alt="ENEM"</div>
+
+    </p>
+
+</div>
+
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>Talvez pensando nas distâncias euclidianas fique fácil</h3>
+    </div>
+
+
+<img class="fit-picture" src="14-abdi.png" width="800" height="600" alt="ENEM"</div>
+
+    </p>
+
+</div>
+
+
+</div></section>
+
+<section class="aula" id="aula4"><div class="aulaHead"><h2>🐍Aplicação prática (Python)</h2></div><div class="timeline">
+
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], tags: 'none',
+           macros: { tr: '\\operatorname{tr}', ones: '\\mathbf{1}' } },
+    options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+  };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.js"></script>
+
+
+<style>
+  main.esm { max-width:1000px; margin:0 auto; }
+  .esm h1 { margin:0 0 4px; font-size:1.7rem; }
+  .esm h2 { margin:40px 0 8px; padding-top:12px; border-top:1px solid var(--line); font-size:1.35rem; }
+  .esm h3 { margin:22px 0 6px; font-size:1.05rem; }
+  .esm .sub { color:var(--muted); margin:0 0 12px; }
+  .esm nav { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 0; }
+  .esm nav a { color:var(--fg); background:var(--card); border:1px solid var(--line); border-radius:999px;
+               padding:4px 12px; font-size:.85rem; text-decoration:none; }
+  .esm nav a:hover { border-color:var(--a); }
+  .esm table { border-collapse:collapse; width:100%; font-size:.9rem; margin:8px 0 12px; display:block; overflow-x:auto; }
+  .esm th, .esm td { border:1px solid var(--line); padding:6px 10px; text-align:left; vertical-align:top; }
+  .esm th { background:var(--card); }
+  .esm code { background:var(--card); padding:1px 5px; border-radius:4px; font-size:.85em; }
+  .esm pre { background:var(--code); border:1px solid var(--line); border-radius:8px; padding:12px; overflow-x:auto; font-size:.82rem; }
+  .esm pre code { background:none; padding:0; }
+  mjx-container[display="true"] { overflow-x:auto; overflow-y:hidden; max-width:100%; }
+
+  /* pipeline */
+  .fase { margin:14px 0 6px; font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+  .linha { display:flex; flex-wrap:wrap; gap:14px; margin-bottom:10px; }
+  .etapa { flex:1 1 200px; background:var(--card); border:1px solid var(--line); border-top:4px solid var(--cor);
+           border-radius:8px; padding:10px 12px; position:relative; }
+  .etapa .n { display:inline-block; width:22px; height:22px; line-height:22px; text-align:center; border-radius:50%;
+              background:var(--cor); color:var(--bg); font-size:.8rem; font-weight:700; margin-right:6px; }
+  .etapa h4 { display:inline; font-size:1rem; margin:0; }
+  .etapa p { margin:6px 0 0; font-size:.85rem; color:var(--muted); }
+  .etapa .lib { font-size:.78rem; color:var(--cor); font-weight:600; }
+  .etapa:not(:last-child)::after { content:"→"; position:absolute; right:-13px; top:50%; transform:translateY(-50%); color:var(--muted); }
+  .dados { --cor:var(--a); } .prep { --cor:var(--b); } .esmc { --cor:var(--d); } .saida { --cor:var(--c); }
+  @media (max-width:600px) { .etapa:not(:last-child)::after { content:"↓"; right:auto; left:50%; top:auto; bottom:-17px; transform:translateX(-50%); } }
+
+  /* demonstração */
+  .passo { background:var(--card); border:1px solid var(--line); border-left:4px solid var(--d); border-radius:8px; padding:10px 14px; margin:12px 0; }
+  .passo > .t { font-weight:700; margin:0 0 4px; }
+  .passo p { margin:6px 0; }
+  .caixa { background:var(--card); border:1px dashed var(--line); border-radius:8px; padding:10px 14px; margin:12px 0; font-size:.92rem; }
+  .atencao { border-left:4px solid var(--warn); }
+  .refs p { margin:0 0 14px; text-align:left; overflow-wrap:anywhere; }
+</style>
+</head>
+
+<body>
+<main class="esm">
+
+<h1>Escalonamento Multidimensional: do código à demonstração</h1>
+<p class="sub">Pipeline de desenvolvimento dos três notebooks, bibliotecas e demonstração algébrica do ESM clássico.</p>
+
+
+<!-- ======================================================= -->
+<h2 id="visao">1. Visão geral dos notebooks</h2>
+<table>
+  <tr><th>Notebook</th><th>Dados</th><th>Entrada do ESM</th><th>Ideia principal</th></tr>
+  <tr><td><code>01-MDS_Distancias.ipynb</code></td><td><code>atlas_dist.csv</code> (18 cidades)</td>
+      <td>Matriz de distâncias <strong>já pronta</strong> (km)</td>
+      <td>Recuperar posições a partir de distâncias; distâncias <strong>não euclidianas</strong> (autovalores negativos)</td></tr>
+  <tr><td><code>02-MDS-banco_mundial_2019.ipynb</code></td><td><code>bancomundial_2019.csv</code> (155 países × 8 indicadores)</td>
+      <td>Distâncias euclidianas sobre variáveis padronizadas</td><td>ESM × ACP; grupos por nível de renda</td></tr>
+  <tr><td><code>03-MDS-oms_2019.ipynb</code></td><td><code>oms_2019.csv</code> (182 países × 7 indicadores)</td>
+      <td>Idem</td><td>ESM × ACP; grupos por região da OMS</td></tr>
+</table>
+</p>
+
+<!-- ======================================================= -->
+<h2 id="pipeline">2. Pipeline de desenvolvimento</h2>
+<p class="sub">Mesma sequência nos três notebooks; só muda a origem da matriz de distâncias \(D\).</p>
+
+<p class="fase">Fase 1 · Dados e preparação</p>
+<div class="linha">
+  <div class="etapa dados"><span class="n">1</span><h4>Dados brutos</h4>
+    <p>CSV local ou API (Banco Mundial, OMS). Distância: <code>atlas_dist.csv</code>, só o triângulo inferior.</p>
+    <p class="lib">pandas · urllib · json</p></div>
+  <div class="etapa prep"><span class="n">2</span><h4>Limpeza</h4>
+    <p>Casos completos (<code>dropna</code>). Distância: simetrizar a matriz (somar a transposta) e zerar a diagonal.</p>
+    <p class="lib">pandas · numpy</p></div>
+  <div class="etapa prep"><span class="n">3</span><h4>Transformação</h4>
+    <p>Logaritmo das variáveis assimétricas (PIB per capita, mortalidades, suicídio com <code>log1p</code>).</p>
+    <p class="lib">numpy · scipy.stats</p></div>
+  <div class="etapa prep"><span class="n">4</span><h4>Padronização</h4>
+    <p>\(Z = (X-\bar{x})/s\). Equivale a usar a matriz de correlações.</p>
+    <p class="lib">pandas</p></div>
+</div>
+
+<p class="fase">Fase 2 · Escalonamento multidimensional clássico</p>
+<div class="linha">
+  <div class="etapa esmc"><span class="n">5</span><h4>Matriz \(D\)</h4>
+    <p>Dada (Ex. 3) ou distância euclidiana entre as linhas de \(Z\).</p><p class="lib">numpy</p></div>
+  <div class="etapa esmc"><span class="n">6</span><h4>Dupla centralização</h4>
+    <p>\(B=-\tfrac12 H D^{*} H\), com \(D^{*}=[\delta_{ij}^2]\) e \(H=I-\tfrac1n\ones\ones^\top\).</p><p class="lib">numpy</p></div>
+  <div class="etapa esmc"><span class="n">7</span><h4>Decomposição espectral</h4>
+    <p>\(B=Q\Lambda Q^\top\) com <code>np.linalg.eigh</code>, em ordem decrescente.</p><p class="lib">numpy.linalg</p></div>
+  <div class="etapa esmc"><span class="n">8</span><h4>Coordenadas</h4>
+    <p>\(Y=Q_q\Lambda_q^{1/2}\), com \(q=2\) ou \(3\).</p><p class="lib">numpy</p></div>
+</div>
+
+<p class="fase">Fase 3 · Avaliação e interpretação</p>
+<div class="linha">
+  <div class="etapa saida"><span class="n">9</span><h4>Distorção</h4>
+    <p><code>distor</code> (&gt; 0,70), <em>stress</em> de Kruskal, autovalores (negativos: não euclidiana).</p><p class="lib">numpy</p></div>
+  <div class="etapa saida"><span class="n">10</span><h4>Gráficos</h4>
+    <p>2D e 3D, cores por grupo, distâncias originais × reconstruídas.</p><p class="lib">matplotlib</p></div>
+  <div class="etapa saida"><span class="n">11</span><h4>Interpretação</h4>
+    <p>Proximidade entre pontos, grupos, comparação ESM × ACP.</p><p class="lib">—</p></div>
+</div>
+
+<div class="caixa"><strong>Verificação cruzada (Banco Mundial e OMS):</strong> com dados padronizados e distância euclidiana,
+<code>distor</code> do ESM = PVEA da ACP, e as coordenadas coincidem com os escores da ACP, a menos do sinal (demonstrado na seção 4.9).</div>
+
+<!-- ======================================================= -->
+<h2 id="bibliotecas">3. Bibliotecas e ambiente</h2>
+<table>
+  <tr><th>Biblioteca</th><th>Uso nos notebooks</th><th>Notebooks</th></tr>
+  <tr><td><code>numpy</code></td><td>Álgebra matricial: \(H\), \(B\), <code>np.linalg.eigh</code>, distâncias</td><td>Todos</td></tr>
+  <tr><td><code>pandas</code></td><td>Leitura do CSV, tabelas, estatísticas, grupos</td><td>Todos</td></tr>
+  <tr><td><code>matplotlib</code></td><td>Gráficos 2D e 3D (dispersão, barras, boxplot, histograma)</td><td>Todos</td></tr>
+  <tr><td><code>scipy.stats</code></td><td>Assimetria, curtose, QQ-plots (<code>probplot</code>)</td><td>Banco Mundial, OMS</td></tr>
+  <tr><td><code>itertools</code> (padrão)</td><td><code>combinations</code>: teste da desigualdade triangular</td><td>Distâncias</td></tr>
+  <tr><td><code>os</code>, <code>json</code>, <code>urllib</code> (padrão)</td><td>Verificar arquivo local e consultar as APIs</td><td>Banco Mundial, OMS</td></tr>
+  <tr><td><code>google.colab.files</code></td><td>Enviar o CSV ao Colab (só se o arquivo não existir)</td><td>Todos</td></tr>
+</table>
+<pre><code>pip install numpy pandas matplotlib scipy</code></pre>
+<div class="caixa atencao"><strong>Por que não usar <code>scikit-learn</code>?</strong> O ESM clássico é implementado diretamente com <code>numpy</code> e <code>scipy</code>, enquanto <code>sklearn.manifold.MDS</code> usa outro algoritmo (SMACOF, minimização de <em>stress</em>) e não reproduziria os números do PDF.</div>
+
+<!-- ======================================================= -->
+<h2 id="algebra">4. Demonstração algébrica do ESM clássico</h2>
+<p class="sub">Objetivo: a partir apenas de \(D=[\delta_{ij}]\), obter coordenadas \(Y_1,\dots,Y_n\in\mathbb{R}^q\) cujas distâncias aproximem \(\delta_{ij}\).</p>
+
+<h3>4.1 Hipóteses e ponto de partida</h3>
+<div class="passo">
+  <p>Sejam \(x_1,\dots,x_n\in\mathbb{R}^p\) as observações, com colunas centradas: \(\sum_{i=1}^{n}x_{ik}=0\) para todo \(k\).
+  A distância euclidiana é \(\delta_{ij}=\lVert x_i-x_j\rVert=\bigl(\sum_{k=1}^{p}(x_{ik}-x_{jk})^2\bigr)^{1/2}\). Expandindo o quadrado,</p>
+  \[ \delta_{ij}^2=\lVert x_i\rVert^2+\lVert x_j\rVert^2-2\,x_i^\top x_j . \]
+  <p>Defina \(b_{ij}=x_i^\top x_j\), isto é, \(B=XX^\top\) (matriz \(n\times n\) de produtos internos). Então</p>
+  \[ \delta_{ij}^2=b_{ii}+b_{jj}-2\,b_{ij}. \tag*{(1)} \]
+</div>
+
+<h3>4.2 As linhas (e colunas) de \(B\) somam zero</h3>
+<div class="passo">
+  \[ \sum_{i=1}^{n} b_{ij}=\sum_{i=1}^{n}\sum_{k=1}^{p}x_{ik}x_{jk}=\sum_{k=1}^{p}x_{jk}\Bigl(\sum_{i=1}^{n}x_{ik}\Bigr)=0 . \tag*{(2)} \]
+  <p>Como \(B\) é simétrica, também \(\sum_{j}b_{ij}=0\). É aqui que a centralização das colunas é usada.</p>
+</div>
+
+<h3>4.3 Somando a equação (1)</h3>
+<div class="passo">
+  <p>Seja \(T=\tr(B)=\sum_{i}b_{ii}\). Somando (1) em \(i\), e usando (2),</p>
+  \[ \sum_{i=1}^{n}\delta_{ij}^2=\underbrace{\sum_i b_{ii}}_{T}+n\,b_{jj}-2\underbrace{\sum_i b_{ij}}_{0}=T+n\,b_{jj}. \]
+  <p>Analogamente, somando em \(j\), e depois nos dois índices:</p>
+  \[ \sum_{j=1}^{n}\delta_{ij}^2=T+n\,b_{ii},\qquad \sum_{i=1}^{n}\sum_{j=1}^{n}\delta_{ij}^2=2nT. \tag*{(3)} \]
+</div>
+
+<h3>4.4 Isolando \(b_{ii}\) e \(b_{jj}\)</h3>
+<div class="passo">
+  <p>Defina as médias
+  \(\delta_{i\cdot}^2=n^{-1}\sum_{j}\delta_{ij}^2\), \(\delta_{\cdot j}^2=n^{-1}\sum_{i}\delta_{ij}^2\) e \(\delta_{\cdot\cdot}^2=n^{-2}\sum_{i}\sum_{j}\delta_{ij}^2\).
+  De (3): \(T=\tfrac{n}{2}\,\delta_{\cdot\cdot}^2\), e portanto \(T/n=\tfrac12\delta_{\cdot\cdot}^2\). Logo</p>
+  \[ b_{ii}=\delta_{i\cdot}^2-\tfrac12\delta_{\cdot\cdot}^2,\qquad b_{jj}=\delta_{\cdot j}^2-\tfrac12\delta_{\cdot\cdot}^2 . \]
+</div>
+
+<h3>4.5 Obtendo \(b_{ij}\) apenas em função das distâncias</h3>
+<div class="passo">
+  <p>De (1), \(2b_{ij}=b_{ii}+b_{jj}-\delta_{ij}^2\). Substituindo o resultado de 4.4:</p>
+  \[ b_{ij}=-\frac12\Bigl(\delta_{ij}^2-\delta_{i\cdot}^2-\delta_{\cdot j}^2+\delta_{\cdot\cdot}^2\Bigr). \tag*{(4)} \]
+  <p>Ou seja, a partir de \(D\) é possível encontrar \(B=XX^\top\) <strong>sem conhecer \(X\)</strong>.</p>
+</div>
+
+<h3>4.6 Forma matricial: a dupla centralização</h3>
+<div class="passo">
+  <p>Seja \(D^{*}\) a matriz com entradas \(\delta_{ij}^2\) e \(H=I-\tfrac1n\ones\ones^\top\) (a matriz de centralização, simétrica e idempotente).
+  Multiplicar \(D^{*}\) por \(H\) à esquerda subtrai de cada elemento a média de sua coluna (\(\delta_{\cdot j}^2\)); à direita, a média de sua linha (\(\delta_{i\cdot}^2\)).
+  O termo \(\delta_{\cdot\cdot}^2\) reaparece porque a média geral foi subtraída duas vezes. Assim, a entrada \((i,j)\) de \(HD^{*}H\) é
+  \(\delta_{ij}^2-\delta_{i\cdot}^2-\delta_{\cdot j}^2+\delta_{\cdot\cdot}^2\), e (4) equivale a</p>
+  \[ B=-\frac12\,H\,D^{*}\,H,\qquad H=I-\frac1n\ones\ones^\top . \tag*{(5)} \]
+  <p>No código: <code>B = -0.5 * H @ (D ** 2) @ H</code>.</p>
+</div>
+
+<h3>4.7 Das matrizes às coordenadas: decomposição espectral</h3>
+<div class="passo">
+  <p>\(B\) é simétrica, logo \(B=Q\Lambda Q^\top\), com \(\Lambda=\operatorname{diag}(\lambda_1\ge\dots\ge\lambda_n)\) e \(Q^\top Q=I\).
+  Queremos \(Y_1,\dots,Y_n\in\mathbb{R}^q\), com \(q<p\), cujas distâncias aproximem as de \(X\). Isso equivale a encontrar \(B^{*}\) de posto \(q\) tal que</p>
+  \[ \min_{B^{*}}\lVert B-B^{*}\rVert_F^2=\min_{B^{*}}\tr\bigl[(B-B^{*})^2\bigr]=\min_{\lambda^{*}}\sum_{k}(\lambda_k-\lambda_k^{*})^2 . \]
+  <p>Pelo teorema de Eckart–Young–Mirsky, o mínimo é atingido mantendo os \(q\) maiores autovalores de \(B\) e anulando os demais:</p>
+  \[ B^{*}=Q_q\Lambda_q Q_q^\top=\bigl(Q_q\Lambda_q^{1/2}\bigr)\bigl(Q_q\Lambda_q^{1/2}\bigr)^\top=YY^\top,\qquad
+     \boxed{\,Y_{n\times q}=Q_q\,\Lambda_q^{1/2}\,}\tag*{(6)} \]
+  <p>As linhas de \(Y\) são as coordenadas procuradas (no código: <code>Y = Q[:, :q] * np.sqrt(lam[:q])</code>).</p>
+</div>
+
+<h3>4.8 As distâncias de \(Y\) reproduzem as de \(D\)</h3>
+<div class="passo">
+  <p>Para as linhas \(Y_i,Y_j\) de \(Y\), com \(b^{*}_{ij}=Y_i^\top Y_j\):</p>
+  \[ \lVert Y_i-Y_j\rVert^2=b^{*}_{ii}+b^{*}_{jj}-2b^{*}_{ij}\;\approx\;b_{ii}+b_{jj}-2b_{ij}=\delta_{ij}^2 . \]
+  <p>A igualdade é <strong>exata</strong> quando \(B\) tem apenas \(q\) autovalores positivos (os demais nulos): então \(B^{*}=B\), e há redução de dimensão sem perda de informação.
+  Como \(B\) só determina \(Y\) por \(YY^\top\), as coordenadas ficam definidas <strong>a menos de rotação e reflexão</strong>
+  (por isso o gráfico pode sair espelhado em relação aos slides).</p>
+</div>
+
+<h3>4.9 Dados padronizados: ESM = ACP</h3>
+<div class="passo">
+  <p>Sejam \(Z\) (\(n\times p\)) os dados padronizados (colunas com média 0 e DP 1) e \(D\) a matriz de distâncias euclidianas entre suas linhas. Então \(B=ZZ^\top\).
+  Escrevendo a decomposição em valores singulares \(Z=USV^\top\):</p>
+  \[ B=ZZ^\top=U S^2 U^\top\;\Rightarrow\;\lambda_k^{(B)}=s_k^2,\qquad Y=U_q S_q=Z V_q . \]
+  <p>Por outro lado, a matriz de correlações é \(R=\tfrac{1}{n-1}Z^\top Z=V\tfrac{S^2}{n-1}V^\top\), com autovalores \(\lambda_k^{(R)}=s_k^2/(n-1)\) e autovetores \(V\). Portanto:</p>
+  <ul>
+    <li>\(Y=ZV_q\) são exatamente os <strong>escores das componentes principais</strong> (a menos do sinal);</li>
+    <li>\(\lambda_k^{(B)}=(n-1)\lambda_k^{(R)}\), de modo que
+      \[ \text{distor}(q)=\frac{\sum_{k\le q}\lambda_k^{(B)}}{\sum_{k}\lambda_k^{(B)}}=\frac{\sum_{k\le q}\lambda_k^{(R)}}{\sum_{k}\lambda_k^{(R)}}=\text{PVEA}(q). \]</li>
+  </ul>
+  <p>É o que ocorre no Exemplo 4 do PDF (\(0{,}8675=86{,}75\%\)) e nos notebooks do Banco Mundial e da OMS.</p>
+</div>
+
+<h3>4.10 Quando as distâncias não são euclidianas</h3>
+<div class="passo">
+  <p>Se \(D\) não vem de pontos em \(\mathbb{R}^p\), \(B\) deixa de ser semidefinida positiva: surgem <strong>autovalores negativos</strong>, e \(\Lambda^{1/2}\) não existe para eles.
+  Segundo Everitt e Hothorn (2011), \(B\) só é semidefinida positiva se as distâncias forem euclidianas. Alternativas (slide 15): truncar os autovalores negativos em zero ou somar uma constante \(c\) às distâncias, \(\delta_{ij}\leftarrow\delta_{ij}+c\) (\(i\neq j\)).
+  Nos notebooks, usamos apenas os \(q\) maiores autovalores (positivos) e medimos a perda com os valores absolutos.</p>
+  <p><strong>Por que a Terra não é euclidiana?</strong> As distâncias do atlas são arcos de círculo máximo, \(\delta=R\theta\), onde \(\theta\) é o ângulo central. A corda em linha reta seria \(2R\sin(\theta/2)<\delta\).
+  Para Beijing (B), Cape Town (C) e Rio de Janeiro (R):</p>
+  \[ \delta_{BR}^2=300\,155\,625\;\neq\;\delta_{BC}^2+\delta_{CR}^2=167\,624\,809+36\,905\,625=204\,530\,434, \]
+  <p>logo Pitágoras não vale; mas a desigualdade triangular vale: \(\delta_{BR}=17\,325<\delta_{BC}+\delta_{CR}=12\,947+6\,075=19\,022\).
+  Dos 18 autovalores de \(B\), 8 são negativos.</p>
+</div>
+
+<h3>4.11 Medidas de distorção</h3>
+<div class="passo">
+  <p>Seja \(d_{ij}^{(m)}\) a distância entre \(Y_i\) e \(Y_j\) obtida pelo ESM.</p>
+  \[ \text{distor}(q)=\frac{\sum_{k=1}^{q}|\lambda_k|}{\sum_{k=1}^{n}|\lambda_k|}\ \ (\text{quanto mais perto de 1, melhor; regra prática} >0{,}70) \]
+  \[ \text{Stress}=\sqrt{\frac{\sum_{i<j}\bigl(\delta_{ij}-d^{(m)}_{ij}\bigr)^2}{\sum_{i<j}\delta_{ij}^2}}\ \ (\text{Kruskal, 1964; perto de 0 é melhor}) \]
+  \[ S=\sum_{i=1}^{n}\sum_{j=1}^{n}\Bigl(\delta_{ij}^2-\bigl(d^{(m)}_{ij}\bigr)^2\Bigr)\ \ (\text{Gower, 1966}),\qquad
+     P=\frac{\sum_{k=1}^{q}\lambda_k^2}{\sum_{k=1}^{p}\lambda_k^2}\ \ (\text{Mardia et al., 1979; perto de 1 é melhor}) \]
+</div>
+
+<!-- ======================================================= -->
+<h2 id="codigo">5. O ESM clássico em código</h2>
+<p>Bloco idêntico nos três notebooks; cada linha corresponde a uma equação da seção 4.</p>
+<pre><code>import numpy as np
+
+def esm_classico(D):
+    n = D.shape[0]
+    H = np.eye(n) - np.ones((n, n)) / n      # H = I - (1/n) 1 1'          -> (5)
+    B = -0.5 * H @ (D ** 2) @ H              # B = -1/2 H D* H              -> (5)
+    lam, Q = np.linalg.eigh(B)               # B = Q Lambda Q'              -> 4.7
+    o = np.argsort(lam)[::-1]                # ordem decrescente
+    return lam[o], Q[:, o]
+
+lam, Q = esm_classico(D)
+Y = Q[:, :q] * np.sqrt(lam[:q])              # Y = Q_q Lambda_q^(1/2)       -> (6)
+distor = np.abs(lam[:q]).sum() / np.abs(lam).sum()      # 4.11</code></pre>
+<div class="caixa atencao"><strong>Pontos de atenção:</strong>
+<ul>
+  <li><code>np.linalg.eigh</code> devolve os autovalores em ordem <strong>crescente</strong>: é preciso inverter.</li>
+  <li>Com autovalores negativos (Exemplo 3), a raiz quadrada só é aplicada aos \(q\) maiores, que são positivos.</li>
+  <li>O sinal de cada autovetor é arbitrário: o gráfico pode sair espelhado.</li>
+</ul></div>
+
+<h3>Passo a passo por notebook</h3>
+<table>
+  <tr><th>Exemplo 3 (cidades)</th><th>Banco Mundial e OMS</th></tr>
+  <tr><td><ol>
+    <li>Ler <code>atlas_dist.csv</code> (<code>index_col=0</code>).</li>
+    <li>Montar a matriz 18×18: reindexar, <code>NaN</code>→0, somar a transposta, zerar a diagonal.</li>
+    <li>Verificar diagonal nula, simetria e valores ≥ 0.</li>
+    <li>Mostrar que a Terra não é euclidiana (Pitágoras × desigualdade triangular; 816 trincas).</li>
+    <li>ESM clássico e tabela de autovalores.</li>
+    <li>Medidas de distorção: <code>distor</code>, Mardia, <em>stress</em>.</li>
+    <li>Gráficos 2D, 3D e distâncias originais × reconstruídas.</li>
+    <li>Conferir com os slides.</li>
+  </ol></td>
+  <td><ol>
+    <li>Obter os dados (CSV ou API); manter casos completos.</li>
+    <li>Análise descritiva: medidas resumo, boxplots, histogramas, QQ-plots, dispersão, correlações.</li>
+    <li>Transformar variáveis assimétricas (log).</li>
+    <li>Padronizar: \(Z=(X-\bar{x})/s\).</li>
+    <li>ACP pela matriz de correlações: autovalores, PVE/PVEA, coeficientes, biplot.</li>
+    <li>\(D\) = distâncias euclidianas de \(Z\).</li>
+    <li>ESM com \(q=2\) e \(q=3\): <code>distor</code> e <em>stress</em>.</li>
+    <li>Gráficos 2D/3D coloridos por grupo.</li>
+    <li>ESM × ACP: <code>distor</code> = PVEA; coordenadas = escores.</li>
+  </ol></td></tr>
+</table>
+
+<!-- ======================================================= -->
+<h2 id="resultados">6. Resultados de referência</h2>
+<table>
+  <tr><th>Notebook</th><th>distor (q=2)</th><th>distor (q=3)</th><th>Observação</th></tr>
+  <tr><td>Exemplo Distâncias</td><td>0,6017</td><td>0,7955</td><td>8 autovalores negativos</td></tr>
+  <tr><td>Banco Mundial</td><td>0,5994</td><td>0,7222</td><td>Indicadores pouco redundantes (o desemprego quase não se correlaciona com os demais)</td></tr>
+  <tr><td>OMS</td><td>0,6779</td><td>0,8441</td><td>Eixo 1: desenvolvimento em saúde; eixo 2: obesidade e hipertensão × suicídio</td></tr>
+</table>
+
+<!-- ======================================================= -->
+<h2 id="referencias">7. Referências (bases de dados)</h2>
+<p class="sub">Formato ABNT (NBR 6023). Dados dos Exemplos 3 (cidades), Banco Mundial e OMS.</p>
+<div class="refs">
+  <p>LUDWIG, Guilherme. <strong>ME907/MI418: Estatística Espacial/Geoestatística</strong>. Dados: Atlas: loc e dist. Campinas: Universidade Estadual de Campinas, Instituto de Matemática, Estatística e Computação Científica, 2019. Banco de dados. Disponível em: https://www.ime.unicamp.br/~gvludwig/2019s0-me907-mi418/. Acesso em: 12 nov. 2026.</p>
+
+  <p>WORLD BANK. <strong>World Development Indicators</strong>. Washington, DC: World Bank, 2019. Banco de dados. Disponível em: https://data.worldbank.org. Acesso em: 12 nov. 2026.</p>
+
+  <p>WORLD HEALTH ORGANIZATION. <strong>The Global Health Observatory</strong>. Geneva: WHO, 2019. Banco de dados. Disponível em: https://www.who.int/data/gho. Acesso em: 12 nov. 2026.</p>
+</div>
+
+<h3>Séries utilizadas</h3>
+<table>
+  <tr><th>Base</th><th>Variável</th><th>Código da série</th></tr>
+  <tr><td rowspan="8">World Bank (ano 2019)</td><td>PIB per capita (PPC, US$ constantes)</td><td><code>NY.GDP.PCAP.PP.KD</code></td></tr>
+  <tr><td>Expectativa de vida ao nascer</td><td><code>SP.DYN.LE00.IN</code></td></tr>
+  <tr><td>Mortalidade infantil</td><td><code>SP.DYN.IMRT.IN</code></td></tr>
+  <tr><td>População urbana (% do total)</td><td><code>SP.URB.TOTL.IN.ZS</code></td></tr>
+  <tr><td>Comércio exterior (% do PIB)</td><td><code>NE.TRD.GNFS.ZS</code></td></tr>
+  <tr><td>Inflação anual (%)</td><td><code>FP.CPI.TOTL.ZG</code></td></tr>
+  <tr><td>Desemprego (% da força de trabalho)</td><td><code>SL.UEM.TOTL.ZS</code></td></tr>
+  <tr><td>Gasto em saúde (% do PIB)</td><td><code>SH.XPD.CHEX.GD.ZS</code></td></tr>
+  <tr><td rowspan="7">OMS, GHO (ano 2019)</td><td>Expectativa de vida ao nascer</td><td><code>WHOSIS_000001</code></td></tr>
+  <tr><td>Mortalidade infantil</td><td><code>MDG_0000000001</code></td></tr>
+  <tr><td>Razão de mortalidade materna</td><td><code>MDG_0000000026</code></td></tr>
+  <tr><td>Prevalência de obesidade em adultos</td><td><code>NCD_BMI_30A</code></td></tr>
+  <tr><td>Prevalência de hipertensão em adultos</td><td><code>NCD_HYP_PREVALENCE_A</code></td></tr>
+  <tr><td>Consumo de álcool per capita</td><td><code>SA_0000001688</code></td></tr>
+  <tr><td>Taxa de suicídio</td><td><code>SDGSUICIDE</code></td></tr>
+</table>
+
+</div></section>
+
+<section class="aula" id="aula5"><div class="aulaHead"><h2>📃Papers</h2></div><div class="timeline">
+
+<div class="event priority">
+
+    <div class="titleRow">
+        <h3>Estratégia de Busca Bibliográfica</h3>
+    </div>
+
+    <p class="authors">
+
+        O objetivo desta etapa foi identificar publicações recentes que utilizassem o método de Escalonamento Multidimensional (Multidimensional Scaling - MDS).
+
+        <br><br>
+
+        As buscas foram realizadas na base de dados Scopus devido à sua ampla cobertura multidisciplinar de artigos científicos, trabalhos de conferência e revisões de literatura.
+
+        <br><br>
+
+        Considerando a elevada disseminação do método em diferentes áreas do conhecimento, foi adotada uma estratégia de refinamento progressivo para aumentar a precisão dos resultados recuperados.
+
+    </p>
+
+</div>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>Busca Inicial</h3>
+    </div>
+
+    <p class="authors">
+
+        A primeira busca teve como objetivo identificar a literatura recente associada ao termo "Multidimensional Scaling" ou à sigla "MDS".
+
+        <br><br>
+
+        <strong>String de busca:</strong>
+
+        <div class="reason">
+
+TITLE-ABS-KEY("multidimensional scaling" OR MDS)
+<br>
+AND PUBYEAR &gt; 2020
+<br>
+AND LANGUAGE(english)
+
+        </div>
+
+        <br>
+
+        <strong>Resultado obtido:</strong>
+
+        <ul>
+            <li>23.478 documentos recuperados.</li>
+        </ul>
+
+        <br>
+
+        Apesar da elevada cobertura, observou-se que a sigla <strong>MDS</strong> apresenta múltiplos significados em diferentes áreas do conhecimento, especialmente em Medicina, Genética, Biologia Molecular e Microbiologia, resultando em grande quantidade de documentos não relacionados ao método de Escalonamento Multidimensional.
+
+    </p>
+
+</div>
+
+<div class="event priority">
+
+    <div class="titleRow">
+        <h3>Refinamento da Busca</h3>
+    </div>
+
+    <p class="authors">
+
+        Para aumentar a especificidade da busca, foi incorporado um filtro baseado na palavra-chave exata utilizada pelos autores dos artigos.
+
+        <br><br>
+
+        <strong>String de busca refinada:</strong>
+
+        <div class="reason">
+
+TITLE-ABS-KEY("multidimensional scaling" OR MDS)
+<br>
+AND PUBYEAR &gt; 2020
+<br>
+AND LANGUAGE(english)
+<br>
+AND (
+<br>
+&nbsp;&nbsp;LIMIT-TO(EXACTKEYWORD,"Multidimensional Scaling")
+<br>
+)
+
+        </div>
+
+        <br>
+
+        <strong>Resultado obtido:</strong>
+
+        <ul>
+            <li>2.864 documentos recuperados.</li>
+        </ul>
+
+        <br>
+
+        A inclusão do filtro <strong>EXACTKEYWORD = "Multidimensional Scaling"</strong> permitiu reduzir significativamente a ocorrência de artigos relacionados a outros significados do acrônimo MDS, concentrando a amostra em trabalhos que efetivamente empregam ou discutem o método de Escalonamento Multidimensional.
+
+    </p>
+
+</div>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>Distribuição por Área do Conhecimento</h3>
+    </div>
+
+    <p class="authors">
+
+        Após o refinamento da busca, os 2.864 documentos recuperados foram analisados segundo a classificação de <em>Subject Area</em> disponibilizada pela Scopus.
+
+        <br><br>
+
+        A Tabela a seguir apresenta as principais áreas temáticas identificadas.
+
+    </p>
+
+</div>
+
+<div class="event summary">
+
+    <table class="timelineTable">
+
+        <thead>
+
+            <tr>
+                <th>Subject Area</th>
+                <th>Publicações</th>
+                <th>Participação (%)</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Medicine</td>
+                <td>1109</td>
+                <td>38,7%</td>
+            </tr>
+
+            <tr>
+                <td>Biochemistry, Genetics and Molecular Biology</td>
+                <td>713</td>
+                <td>24,9%</td>
+            </tr>
+
+            <tr>
+                <td>Environmental Science</td>
+                <td>565</td>
+                <td>19,7%</td>
+            </tr>
+
+            <tr>
+                <td>Immunology and Microbiology</td>
+                <td>404</td>
+                <td>14,1%</td>
+            </tr>
+
+            <tr>
+                <td>Agricultural and Biological Sciences</td>
+                <td>296</td>
+                <td>10,3%</td>
+            </tr>
+
+            <tr>
+                <td>Computer Science</td>
+                <td>283</td>
+                <td>9,9%</td>
+            </tr>
+
+            <tr>
+                <td>Neuroscience</td>
+                <td>219</td>
+                <td>7,6%</td>
+            </tr>
+
+            <tr>
+                <td>Engineering</td>
+                <td>217</td>
+                <td>7,6%</td>
+            </tr>
+
+            <tr>
+                <td>Social Sciences</td>
+                <td>193</td>
+                <td>6,7%</td>
+            </tr>
+
+            <tr>
+                <td>Chemistry</td>
+                <td>184</td>
+                <td>6,4%</td>
+            </tr>
+
+            <tr>
+                <td>Multidisciplinary</td>
+                <td>163</td>
+                <td>5,7%</td>
+            </tr>
+
+            <tr>
+                <td>Psychology</td>
+                <td>159</td>
+                <td>5,6%</td>
+            </tr>
+
+            <tr>
+                <td>Mathematics</td>
+                <td>156</td>
+                <td>5,4%</td>
+            </tr>
+
+            <tr>
+                <td>Chemical Engineering</td>
+                <td>119</td>
+                <td>4,2%</td>
+            </tr>
+
+            <tr>
+                <td>Pharmacology, Toxicology and Pharmaceutics</td>
+                <td>119</td>
+                <td>4,2%</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<div class="event priority">
+
+    <div class="titleRow">
+        <h3>Análise dos Resultados</h3>
+    </div>
+
+    <p class="authors">
+
+        Os resultados evidenciam o caráter fortemente interdisciplinar do Escalonamento Multidimensional.
+
+        <br><br>
+
+        Embora o método tenha sido historicamente desenvolvido em áreas como Psicologia, Psicometria e Estatística Multivariada, observa-se atualmente uma ampla utilização em disciplinas relacionadas às Ciências da Vida e Ciências Ambientais.
+
+        <br><br>
+
+        As áreas com maior concentração de publicações foram:
+
+        <ul>
+            <li>Medicine (38,7%);</li>
+            <li>Biochemistry, Genetics and Molecular Biology (24,9%);</li>
+            <li>Environmental Science (19,7%);</li>
+            <li>Immunology and Microbiology (14,1%).</li>
+        </ul>
+
+        <br>
+
+        Por outro lado, áreas tradicionalmente associadas ao desenvolvimento metodológico da técnica, como Psicologia, Matemática, Ciências Sociais e Engenharia, apresentam menor participação relativa, indicando que o método evoluiu de uma ferramenta originalmente psicométrica para uma abordagem amplamente utilizada em diferentes domínios científicos.
+
+    </p>
+
+</div>
+
+<section class="paper-card">
+    <h2>Artigo 1</h2>
+
+    <h3>Measuring the Refined Theory of Individual Values in 49 Cultural Groups</h3>
+
+    <p><strong>Autores:</strong> Shalom H. Schwartz e Jan Cieciuch</p>
+
+    <p><strong>Periódico:</strong> Assessment (2022)</p>
+
+    <p><strong>Amostra:</strong> 53.472 respondentes de 49 grupos culturais</p>
+
+    <p><strong>Citações:</strong> 210 em 11 de novembro de 2026</p>
+</section>
+
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>I. Problema e Questões de Pesquisa</h3>
+    </div>
+
+    <p class="authors">
+
+        O estudo buscou validar o questionário PVQ-RR, desenvolvido para medir 19 valores humanos propostos pela teoria refinada de Schwartz.
+
+        <br><br>
+
+        Embora o instrumento já fosse amplamente utilizado, ainda era necessário verificar sua confiabilidade, validade intercultural e aderência à estrutura teórica dos valores.
+
+        <br><br>
+
+        Questões de pesquisa:
+
+        <br><br>
+
+        • O instrumento é confiável?
+
+        <br>
+
+        • Os 19 valores podem ser distinguidos empiricamente?
+
+        <br>
+
+        • O modelo é válido em diferentes culturas?
+
+        <br>
+
+        • A estrutura circular prevista pela teoria é confirmada pelos dados?
+<br>
+
+<img class="fit-picture" src="06-Paper-Psy.png" width="600" height="600" alt="MDS_PaperPsy"</div>
+
+    </p>
+
+</div>
+
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>II. Abordagem Metodológica</h3>
+    </div>
+
+    <p class="authors">
+
+        A pesquisa analisou 53.472 participantes distribuídos em 49 grupos culturais e 32 idiomas.
+
+        <br><br>
+
+        Os dados foram coletados por meio do questionário PVQ-RR, composto por 57 itens destinados à mensuração de 19 valores humanos.
+
+        <br><br>
+
+        Técnicas empregadas:
+
+        <br><br>
+
+        • Cronbach's Alpha
+
+        <br>
+
+        • Confirmatory Factor Analysis (CFA)
+
+        <br>
+
+        • Multi-group CFA
+
+        <br>
+
+        • Confirmatory Multidimensional Scaling (MDS)
+
+    </p>
+
+</div>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>III. Papel do MDS</h3>
+    </div>
+
+    <p class="authors">
+
+        O objetivo do MDS foi verificar se os 19 valores humanos formavam a estrutura circular prevista pela teoria de Schwartz.
+
+        <br><br>
+
+        Os autores utilizaram Confirmatory MDS sobre uma matriz de correlações entre os valores, comparando a configuração empírica com a configuração teórica esperada.
+
+        <br><br>
+
+        O principal resultado foi a construção de um mapa bidimensional capaz de representar visualmente as relações de compatibilidade e conflito entre os valores humanos.
+
+    </p>
+
+</div>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>IV. Resultados</h3>
+    </div>
+
+    <p class="authors">
+
+        Os resultados demonstraram que o PVQ-RR apresentou elevada confiabilidade e diferenciou adequadamente os 19 valores avaliados.
+
+        <br><br>
+
+        A análise intercultural indicou forte consistência entre os diferentes grupos estudados.
+
+        <br><br>
+
+        O mapa obtido por meio do Confirmatory MDS reproduziu integralmente a estrutura circular prevista pela teoria.
+
+        <br><br>
+
+        Dessa forma, as questões de pesquisa foram respondidas positivamente, oferecendo evidências robustas para a validade do instrumento e da teoria dos valores humanos.
+
+    </p>
+
+</div>
+
+<style>
+#animation-container {
+    position: relative;
+    width: 700px;
+    height: 700px;
+    margin: auto;
+}
+
+#animation-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#morph-image {
+    opacity: 0;
+}
+
+#caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,.7);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-family: Arial;
+}
+</style>
+</head>
+
+<body>
+
+<div id="animation-container">
+
+    <img id="base-image" src="06-Paper-Psy.png">
+
+    <img id="morph-image" src="07-Paper-Psy.png">
+
+    <div id="caption">
+        Theoretical Structure
+    </div>
+
+</div>
+
+<script>
+
+const morph = document.getElementById("morph-image");
+const caption = document.getElementById("caption");
+
+let progress = 0;
+let direction = 1;
+
+function animate() {
+
+    progress += 0.005 * direction;
+
+    if (progress >= 1) {
+        progress = 1;
+        direction = -1;
+
+        caption.innerHTML =
+            "Empirical Validation (MDS)";
+    }
+
+    if (progress <= 0) {
+        progress = 0;
+        direction = 1;
+
+        caption.innerHTML =
+            "Theoretical Structure";
+    }
+
+    morph.style.opacity = progress;
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+</script>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>V. Pesquisas Futuras</h3>
+    </div>
+
+    <p class="authors">
+
+        Os autores sugerem ampliar os estudos de Measurement Invariance entre culturas e regiões específicas.
+
+        <br><br>
+
+        Também recomendam investigar valores que apresentaram menor consistência estatística, como Humility e Achievement.
+
+        <br><br>
+
+        Outra linha de pesquisa consiste em analisar como os valores identificados pelo PVQ-RR influenciam comportamentos, atitudes e decisões individuais.
+
+    </p>
+
+</div>
+
+<section class="paper-card">
+    <h2>Artigo 2</h2>
+
+    <h3>Spatiotemporal Dynamics of Microplastics in an Urban River Network Area</h3>
+
+    <p><strong>Autores:</strong> Yifan Fan, Jinglan Zheng, Ligang Deng, Wenxin Rao,
+        Qiji Zhang, Tong Liu e Xin Qian</p>
+
+    <p><strong>Periódico:</strong> Water Research, Volume 212 (2022)</p>
+
+    <p><strong>Amostra:</strong> 17 pontos de coleta monitorados ao longo de quatro estações do ano em uma rede fluvial urbana na China.</p>
+
+    <p><strong>Citações:</strong> 180 em 11 de novembro de 2026</p>
+</section>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>I. Problema e Questões de Pesquisa</h3>
+    </div>
+
+    <p class="authors">
+
+        A contaminação por microplásticos em sistemas aquáticos é um problema ambiental crescente, porém pouco se conhece sobre sua dinâmica em redes fluviais urbanas.
+
+        <br><br>
+
+        O estudo investigou como a abundância e a composição dos microplásticos variam espacial e temporalmente em uma rede de rios urbanos na China.
+
+        <br><br>
+
+        Questões de pesquisa:
+
+        <br><br>
+
+        • Como os microplásticos se distribuem ao longo da rede fluvial?
+
+        <br>
+
+        • Existem diferenças sazonais significativas?
+
+        <br>
+
+        • Quais são os principais tipos de polímeros encontrados?
+
+        <br>
+
+        • É possível identificar fontes e rotas de transporte dos microplásticos?
+
+        <br><br>
+        <img class="fit-picture" src="10-Paper-Water.png" width="900" height="600" alt="MDS_PaperPsy"</div>
+    </p>
+
+</div>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>II. Abordagem Metodológica</h3>
+    </div>
+
+    <p class="authors">
+
+        Foram analisadas amostras coletadas em 17 pontos de uma rede fluvial urbana durante quatro estações do ano.
+
+        <br><br>
+
+        A composição dos microplásticos foi identificada utilizando Laser Direct Infrared (LDIR).
+
+        <br><br>
+
+        Os dados foram analisados por meio de:
+
+        <br><br>
+
+        • Kruskal-Wallis
+
+        <br>
+
+        • Mann-Whitney U Test
+
+        <br>
+
+        • Bray-Curtis Distance
+
+        <br>
+
+        • Non-metric Multidimensional Scaling (NMDS)
+
+    </p>
+
+</div>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>III. Papel do MDS</h3>
+    </div>
+
+    <p class="authors">
+
+        O NMDS foi utilizado para explorar padrões de similaridade entre locais de amostragem com base na composição dos polímeros encontrados.
+
+        <br><br>
+
+        A matriz de distâncias foi construída utilizando Bray-Curtis Distance.
+
+        <br><br>
+
+        O resultado foi um mapa bidimensional que agrupou locais com perfis semelhantes de microplásticos.
+
+        <br><br>
+
+        Esses agrupamentos permitiram inferir possíveis fontes de poluição e trajetórias de transporte dentro da rede fluvial.
+
+    </p>
+
+</div>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>IV. Resultados</h3>
+    </div>
+
+    <p class="authors">
+
+        A abundância de microplásticos foi significativamente maior durante os períodos chuvosos.
+
+        <br><br>
+
+        Silicone, PTFE, borracha e polipropileno foram os polímeros predominantes.
+
+        <br><br>
+
+        A análise NMDS identificou quatro agrupamentos distintos de amostras.
+
+        <br><br>
+
+        O NMDS apresentou excelente ajuste (R²=0,986), identificou agrupamentos distintos de amostras e, ao vincular esses agrupamentos às inspeções de campo, os autores concluíram que áreas comerciais influenciavam as estações de tratamento enquanto áreas industriais eram fontes relevantes de microplásticos transportados para o rio principal.
+
+        <br><br>
+
+<img class="fit-picture" src="08-Paper-Water.png" width="600" height="600" alt="MDS_PaperPsy"</div>
+
+<br>
+
+<img class="fit-picture" src="09-Paper-Water.png" width="600" height="600" alt="MDS_PaperPsy"</div>
+        
+    </p>
+
+</div>
+
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>V. Pesquisas Futuras</h3>
+    </div>
+
+    <p class="authors">
+
+        Os autores sugerem ampliar o monitoramento temporal dos microplásticos em ambientes urbanos.
+
+        <br><br>
+
+        Também recomendam a adoção de métodos padronizados para permitir comparações entre diferentes estudos.
+
+        <br><br>
+
+        Outra oportunidade consiste em utilizar técnicas multivariadas para investigar fontes de contaminação em outras redes hidrográficas.
+
+    </p>
+
+</div>
+
+
+<section class="paper-card">
+    <h2>Artigo 3</h2>
+
+    <h3>Distinct systemic and mucosal immune responses during acute SARS-CoV-2 infection</h3>
+
+    <p><strong>Autores:</strong> Nikaïa Smith et al.</p>
+
+    <p><strong>Periódico:</strong> Nature Immunology (2021)</p>
+
+    <p><strong>Amostra:</strong> 49 pacientes com COVID-19 e 12 controles saudáveis</p>
+
+    <p><strong>Citações:</strong> 128 em 11 de novembro de 2026</p>
+</section>
+
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>I. Problema e Questões de Pesquisa</h3>
+    </div>
+
+    <p class="authors">
+
+        Ainda não estava claro por que alguns pacientes desenvolvem
+        COVID-19 grave enquanto outros apresentam manifestações mais leves.
+
+        <br><br>
+
+        Os autores investigaram as relações entre carga viral,
+        anticorpos, citocinas e microbioma nasal.
+
+        <br><br>
+
+        Questões de pesquisa:
+
+        <br><br>
+
+        • Como as respostas imunológicas locais e sistêmicas diferem?
+
+        <br>
+
+        • Quais fatores estão associados à gravidade da doença?
+
+        <br>
+
+        • Como a carga viral se relaciona com a resposta imunológica?
+
+        <br>
+
+        • O microbioma influencia essas respostas?
+
+    </p>
+
+</div>
+
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>II. Abordagem Metodológica</h3>
+    </div>
+
+    <p class="authors">
+
+        Foram analisadas amostras de plasma e swabs nasofaríngeos
+        de pacientes com diferentes níveis de gravidade.
+
+        <br><br>
+
+        Foram medidos:
+
+        <br><br>
+
+        • Carga viral
+
+        <br>
+
+        • Anticorpos IgG e IgA
+
+        <br>
+
+        • Citocinas
+
+        <br>
+
+        • Perfil microbiológico
+
+        <br><br>
+
+        Os principais métodos estatísticos incluíram correlações,
+        análises imunológicas e Multidimensional Scaling (MDS).
+
+    </p>
+
+</div>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>III. Papel do MDS</h3>
+    </div>
+
+    <p class="authors">
+
+        O MDS foi utilizado para integrar dezenas de variáveis
+        biológicas em um único espaço visual.
+
+        <br><br>
+
+        A técnica permitiu identificar quais biomarcadores estavam
+        mais próximos ou mais distantes entre si.
+
+        <br><br>
+
+        Em vez de analisar correlações isoladamente, os autores
+        utilizaram o MDS para visualizar redes de associação entre
+        carga viral, citocinas, anticorpos e microbioma.
+
+        <br><br>
+
+        O objetivo principal foi revelar padrões biológicos ocultos
+        relacionados à gravidade da COVID-19.
+
+    </p>
+
+</div>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>IV. Resultados</h3>
+    </div>
+
+    <p class="authors">
+
+        O estudo demonstrou que respostas imunológicas locais
+        e sistêmicas possuem comportamentos distintos.
+
+        <br><br>
+
+        O MDS revelou que a carga viral plasmática estava mais
+        associada a processos inflamatórios do que à resposta antiviral.
+
+        <br><br>
+
+        Também mostrou que a microbiota nasal está relacionada à
+        produção de citocinas e à gravidade da doença.
+
+        <br><br>
+
+        Os resultados permitiram compreender melhor os mecanismos
+        biológicos associados às formas graves da COVID-19.
+
+        <br><br>
+        <img class="fit-picture" src="11-Paper-Covid.png" width="1000" height="600" alt="MDS_PaperCovid1"</div>
+
+         <br><br>
+        <img class="fit-picture" src="12-Paper-Covid.png" width="1000" height="600" alt="MDS_PaperCovid2"</div>
+
+    </p>
+
+</div>
+
+<div class="event break">
+
+    <div class="titleRow">
+        <h3>V. Pesquisas Futuras</h3>
+    </div>
+
+    <p class="authors">
+
+        Os autores recomendam estudos longitudinais para acompanhar
+        a evolução temporal das respostas imunológicas.
+
+        <br><br>
+
+        Também sugerem investigar mecanismos causais entre
+        microbioma, inflamação e gravidade clínica.
+
+        <br><br>
+
+        Novas pesquisas podem utilizar abordagens integrativas para
+        compreender outras doenças infecciosas complexas.
+
+    </p>
+
+</div>
+
+
+<style>
+
+.comparison-wrapper{
+    width:100%;
+    overflow-x:auto;
+    margin-top:20px;
+}
+
+.comparison-table{
+    width:100%;
+    min-width:900px;
+    border-collapse:collapse;
+    font-size:0.95rem;
+    background:#ffffff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.comparison-table th{
+    background:#1f4e79;
+    color:white;
+    padding:14px;
+    text-align:center;
+    font-weight:600;
+}
+
+.comparison-table td{
+    padding:12px;
+    border-bottom:1px solid #e6e6e6;
+    vertical-align:top;
+    line-height:1.5;
+}
+
+.comparison-table tr:nth-child(even){
+    background:#f8fafc;
+}
+
+.comparison-table td:first-child{
+    font-weight:600;
+    background:#eef4fa;
+    width:180px;
+}
+
+.paper-1{
+    border-top:4px solid #3b82f6;
+}
+
+.paper-2{
+    border-top:4px solid #22c55e;
+}
+
+.paper-3{
+    border-top:4px solid #ef4444;
+}
+
+/* tablets */
+@media (max-width: 1024px){
+
+    .comparison-table{
+        font-size:0.9rem;
+    }
+
+}
+
+/* smartphones */
+@media (max-width: 768px){
+
+    .comparison-table{
+        min-width:750px;
+        font-size:0.85rem;
+    }
+
+    .comparison-table th,
+    .comparison-table td{
+        padding:10px;
+    }
+
+}
+
+/* smartphones pequenos */
+@media (max-width: 480px){
+
+    .comparison-table{
+        min-width:650px;
+        font-size:0.8rem;
+    }
+
+}
+
+</style>
+
+
+<section class="paper-card">
+    <h2>Comparação dos Estudos: Uso e Inovação do MDS</h2>
+
+</p>
+</section>
+
+<div class="event break">
+
+    <div class="titleRow">
+    </div>
+
+    <table class="comparison-table">
+
+        <tr>
+            <th>Aspecto</th>
+            <th>Valores Humanos</th>
+            <th>Microplásticos</th>
+            <th>COVID-19</th>
+        </tr>
+
+        <tr>
+            <td><strong>Objetivo</strong></td>
+            <td>Validar empiricamente a teoria dos 19 valores humanos.</td>
+            <td>Identificar agrupamentos e possíveis fontes de contaminação.</td>
+            <td>Integrar biomarcadores imunológicos e microbiológicos.</td>
+        </tr>
+
+        <tr>
+            <td><strong>Técnica</strong></td>
+            <td>Confirmatory MDS</td>
+            <td>Non-metric MDS (NMDS)</td>
+            <td>MDS baseado em correlação de Spearman</td>
+        </tr>
+
+        <tr>
+            <td><strong>Entrada</strong></td>
+            <td>Matriz de correlação entre valores humanos.</td>
+            <td>Bray-Curtis Distance entre composições de polímeros.</td>
+            <td>Correlações entre carga viral, citocinas, anticorpos e microbioma.</td>
+        </tr>
+
+        <tr>
+            <td><strong>Como utilizou o MDS</strong></td>
+            <td>Comparou a estrutura observada com a configuração teórica esperada.</td>
+            <td>Projetou amostras ambientais em um espaço bidimensional para identificar agrupamentos.</td>
+            <td>Mapeou relações entre biomarcadores em uma rede de similaridade.</td>
+        </tr>
+
+        <tr>
+            <td><strong>Resultado Principal</strong></td>
+            <td>Confirmação da estrutura circular proposta pela teoria.</td>
+            <td>Identificação de fontes industriais e comerciais de microplásticos.</td>
+            <td>Revelação de padrões distintos entre respostas imunológicas locais e sistêmicas.</td>
+        </tr>
+
+        <tr>
+            <td><strong>Inovação</strong></td>
+            <td>Uso do MDS para validação teórica intercultural.</td>
+            <td>Integração de NMDS e análise ambiental para rastrear poluição.</td>
+            <td>Integração simultânea de dados virais, imunológicos e microbiológicos.</td>
+        </tr>
+
+        <tr>
+            <td><strong>Limitações</strong></td>
+            <td>Dependência da teoria previamente definida.</td>
+            <td>Os agrupamentos não demonstram causalidade direta.</td>
+            <td>Pequeno tamanho amostral e estudo transversal.</td>
+        </tr>
+
+        <tr>
+            <td><strong>Contribuição do MDS</strong></td>
+            <td>Validar uma teoria.</td>
+            <td>Descobrir padrões ocultos.</td>
+            <td>Integrar sistemas complexos.</td>
+        </tr>
+
+    </table>
+
+</div>
+
+
+
+
+</div></section>
+
+<section class="aula" id="aula6"><div class="aulaHead"><h2>📚Bibliográfia</h2></div><div class="timeline">
+
+
+<section id="referencias">
+
+  <style>
+    #referencias {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #222;
+    }
+
+    #referencias .referencia {
+      margin-bottom: 16px;
+      padding-left: 2em;
+      text-indent: -2em;
+      text-align: left;
+    }
+
+    #referencias h2 {
+      font-size: 1.3em;
+      margin-bottom: 24px;
+    }
+
+    #referencias a {
+      color: inherit;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    #referencias a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <div class="referencia">
+    ABDI, Hervé. Multidimensional scaling. In:
+    The University of Texas at Dallas. 2022. p. 1–64.
+  </div>
+
+  <div class="referencia">
+    ARDUIN, Victor. <strong>Análise de correspondência aplicada à pesquisa de desigualdade na educação brasileira</strong>.
+    2022. Trabalho de Conclusão de Curso (Graduação) – Universidade Federal do Rio Grande do Sul, 2022.
+  </div>
+
+  <div class="referencia">
+    AZEVEDO, Caio. <strong>Escalonamento multidimensional</strong>.
+    Campinas: Universidade Estadual de Campinas, 2026.
+  </div>
+
+  <div class="referencia">
+    CHEN, Guangliang. <strong>Multidimensional scaling (MDS): Math 253: Mathematical Methods for Data Visualization</strong>.
+    San José: San José State University, 2020.
+  </div>
+
+  <div class="referencia">
+    DAVIDSON, Mark; SIRECI, Stephen G. Multidimensional scaling. In:
+    TINSLEY, Howard E. A.; BROWN, Steven D. (ed.).
+    <strong>Handbook of applied multivariate statistics and mathematical modeling</strong>.
+    San Diego: Academic Press, 2000. p. 323–352.
+  </div>
+
+  <div class="referencia">
+    DE LEEUW, Jan; MAIR, Patrick. Shepard diagram. In:
+    <strong>Wiley StatsRef: Statistics Reference Online</strong>.
+    DOI: <a href="https://doi.org/10.1002/9781118445112.stat06268.pub2" target="_blank" rel="noopener noreferrer">https://doi.org/10.1002/9781118445112.stat06268.pub2</a>.
+  </div>
+
+  <div class="referencia">
+    DELICADO, Pedro; PACHÓN-GARCÍA, Cristian.
+    Multidimensional scaling for big data.
+    <strong>Advances in Data Analysis and Classification</strong>,
+    v. 19, p. 649–670, 2025.
+    DOI: <a href="https://doi.org/10.1007/s11634-024-00591-9" target="_blank" rel="noopener noreferrer">https://doi.org/10.1007/s11634-024-00591-9</a>.
+  </div>
+
+  <div class="referencia">
+    FAN, Yifan; ZHENG, Jinglan; DENG, Ligang; RAO, Wenxin;
+    ZHANG, Qiji; LIU, Tong; QIAN, Xin.
+    Spatiotemporal dynamics of microplastics in an urban river network area.
+    <strong>Water Research</strong>, v. 219, 118116, 2022.
+    DOI: <a href="https://doi.org/10.1016/j.watres.2022.118116" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/j.watres.2022.118116</a>.
+  </div>
+
+  <div class="referencia">
+    GONÇALVES JÚNIOR, Carlos Alberto; ALVES, Yony Brugnolo;
+    SHIKIDA, Pery Francisco Assis; STADUTO, Jefferson Andronio Ramundo;
+    FREIRE JÚNIOR, Weimar Rocha.
+    Um estudo da Câmara Setorial do Açúcar e do Álcool usando análise de correspondência.
+    In: CONGRESSO DA SOCIEDADE BRASILEIRA DE ECONOMIA,
+    ADMINISTRAÇÃO E SOCIOLOGIA RURAL, 46., 2008.
+    <strong>Anais [...]</strong>. 2008.
+  </div>
+
+  <div class="referencia">
+    GRANJA, Ana Rita Fidalgo de Almeida.
+    <strong>Hábitos alimentares e nutrição em crianças e jovens:
+    modelação estatística de associações e determinantes</strong>.
+    2018. Dissertação (Mestrado) – Universidade Aberta, 2018.
+  </div>
+
+  <div class="referencia">
+    GUJARATI, Damodar N.; PORTER, Dawn C.
+    <strong>Basic econometrics</strong>.
+    New York: McGraw-Hill Education, 2008.
+  </div>
+
+  <div class="referencia">
+    HOFMANN, Valentin et al. AI generates covertly racist decisions
+    about people based on their dialect.
+    <strong>Nature</strong>, v. 633, n. 8028, p. 147–154, 2024.
+    DOI: <a href="https://doi.org/10.1038/s41586-024-07856-5" target="_blank" rel="noopener noreferrer">https://doi.org/10.1038/s41586-024-07856-5</a>.
+  </div>
+
+  <div class="referencia">
+    LUDWIG, Guilherme.
+    <strong>ME907/MI418: Estatística Espacial/Geoestatística:
+    dados: Atlas: loc e dist</strong>.
+    Campinas: Universidade Estadual de Campinas, Instituto de Matemática,
+    Estatística e Computação Científica, 2019. Banco de dados.
+    Disponível em:
+    <a href="https://www.ime.unicamp.br/~gvludwig/2019s0-me907-mi418/" target="_blank" rel="noopener noreferrer">https://www.ime.unicamp.br/~gvludwig/2019s0-me907-mi418/</a>.
+    Acesso em: 12 nov. 2026.
+  </div>
+
+  <div class="referencia">
+    MANCELL, Steven A.; DEUTSCH, Clayton V.
+    <strong>Multidimensional scaling</strong>.
+    Geostatistics Lessons, 2019.
+    Disponível em:
+    <a href="https://geostatisticslessons.com/lessons/mds" target="_blank" rel="noopener noreferrer">https://geostatisticslessons.com/lessons/mds</a>.
+    Acesso em: 13 nov. 2026.
+  </div>
+
+  <div class="referencia">
+    SAEED, Nasir; NAM, Haewoon; UL HAQ, Mian Imtiaz;
+    BHATTI, Dost Muhammad Saqib.
+    A survey on multidimensional scaling.
+    <strong>ACM Computing Surveys</strong>,
+    v. 51, n. 3, art. 47, 2018.
+    DOI: <a href="https://doi.org/10.1145/3178155" target="_blank" rel="noopener noreferrer">https://doi.org/10.1145/3178155</a>.
+  </div>
+
+  <div class="referencia">
+    SCHWARTZ, Shalom H.; CIECIUCH, Jan.
+    Measuring the refined theory of individual values in 49 cultural groups:
+    psychometrics of the revised portrait value questionnaire.
+    <strong>Assessment</strong>, v. 29, n. 5, p. 1005–1019, 2022.
+    DOI: <a href="https://doi.org/10.1177/1073191121998760" target="_blank" rel="noopener noreferrer">https://doi.org/10.1177/1073191121998760</a>.
+  </div>
+
+  <div class="referencia">
+    SMITH, Nikaïa et al. Distinct systemic and mucosal immune responses
+    during acute SARS-CoV-2 infection.
+    <strong>Nature Immunology</strong>, v. 22, p. 1428–1439,
+    nov. 2021.
+    DOI: <a href="https://doi.org/10.1038/s41590-021-01028-7" target="_blank" rel="noopener noreferrer">https://doi.org/10.1038/s41590-021-01028-7</a>.
+  </div>
+
+  <div class="referencia">
+    WORLD BANK. <strong>World Development Indicators</strong>.
+    Washington, DC: World Bank, 2019. Banco de dados.
+    Disponível em:
+    <a href="https://data.worldbank.org/" target="_blank" rel="noopener noreferrer">https://data.worldbank.org/</a>.
+    Acesso em: 12 nov. 2026.
+  </div>
+
+  <div class="referencia">
+    WORLD HEALTH ORGANIZATION.
+    <strong>The Global Health Observatory</strong>.
+    Geneva: WHO, 2019. Banco de dados.
+    Disponível em:
+    <a href="https://www.who.int/data/gho" target="_blank" rel="noopener noreferrer">https://www.who.int/data/gho</a>.
+    Acesso em: 12 nov. 2026.
+  </div>
+
+  <div class="referencia">
+    YOUNG, Forrest W.
+    <strong>Multidimensional scaling: history, theory, and applications</strong>.
+    Hillsdale: Lawrence Erlbaum Associates, 1987.
+  </div>
+
+</section>
+
+
+
+
+</div></section>
+</main>
+
+<div class="modal" id="noteModal" onclick="if(event.target===this) closeNote()"><div class="modalCard"><div class="modalHead"><h2 id="noteTitle"></h2><p id="noteMeta"></p></div><div class="modalBody">
+<div class="field"><label>Principais ideias / argumentos</label><textarea id="fIdeas"></textarea></div>
+<div class="field"><label>Método, dados ou abordagem</label><textarea id="fMethod"></textarea></div>
+<div class="field"><label>Resultados / contribuições</label><textarea id="fResults"></textarea></div>
+<div class="field"><label>Relação com minha pesquisa</label><textarea id="fResearch"></textarea></div>
+<div class="field"><label>Networking / autores / contatos</label><textarea id="fNetwork"></textarea></div>
+<div class="field"><label>Perguntas, referências e próximos passos</label><textarea id="fNext"></textarea></div>
+<div class="field"><label>Relevância</label><select id="fRating"><option value="">Não avaliada</option><option>★</option><option>★★</option><option>★★★</option><option>★★★★</option><option>★★★★★</option></select></div>
+</div><div class="modalActions"><button class="save" onclick="saveNote()">Salvar fichamento</button><button class="copy" onclick="copyNote()">Copiar</button><button class="close" onclick="closeNote()">Fechar</button></div></div></div>
+
+</body></html>
